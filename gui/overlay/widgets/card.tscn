@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://dju6kt8p5x8l"]
+
+[ext_resource type="Script" path="res://gui/overlay/widgets/card.gd" id="1_nvure"]
+
+[node name="card" type="PanelContainer"]
+custom_minimum_size = Vector2i(240, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -241.0
+offset_right = -1.0
+offset_bottom = 80.0
+grow_horizontal = 0
+theme_type_variation = &"CardPanel"
+script = ExtResource("1_nvure")
+
+[node name="v_box_container" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 239.0
+offset_bottom = 79.0
+
+[node name="heading" type="Label" parent="v_box_container"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 184.0
+offset_right = 238.0
+offset_bottom = 13.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_type_variation = &"CardHeadingLabel"
+text = "Example Card"
+horizontal_alignment = 2
+
+[node name="body" type="Label" parent="v_box_container"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 17.0
+offset_right = 238.0
+offset_bottom = 77.0
+size_flags_vertical = 8
+theme_type_variation = &"CardBodyLabel"
+text = "This sure is a card thing (wow)
+Yam, yam, yam, yam, yam, yam, frog.
+
+Weoweoweoweow, weoweoweoweoweow."

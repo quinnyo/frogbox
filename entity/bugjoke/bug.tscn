@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="SpriteFrames" path="res://entity/bugjoke/bug.spriteframes.tres" id="2_7vj8y"]
+[ext_resource type="Script" path="res://entity/bugjoke/bug.gd" id="2_156rq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gsi3j"]
+radius = 4.0
+
+[node name="bug" type="Area2D"]
+script = ExtResource( "2_156rq" )
+
+[node name="timer" type="Timer" parent="."]
+autostart = true
+
+[node name="bug" type="AnimatedSprite2D" parent="."]
+frames = ExtResource( "2_7vj8y" )
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="."]
+shape = SubResource( "CircleShape2D_gsi3j" )
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

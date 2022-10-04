@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ggl4r3fflj1x"]
+
+[ext_resource type="Script" path="res://main/daemon/window.gd" id="1_iww1x"]
+
+[node name="daemon" type="Node"]
+
+[node name="window" type="Node" parent="."]
+script = ExtResource("1_iww1x")

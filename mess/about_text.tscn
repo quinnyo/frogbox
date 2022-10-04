@@ -1,0 +1,102 @@
+[gd_scene load_steps=5 format=3 uid="uid://diyh3q0lp0tb2"]
+
+[sub_resource type="GDScript" id="GDScript_aiqpp"]
+script/source = "extends Control
+
+@onready var about_text: Control = $about_text
+@onready var help: Control = $help
+
+func _ready() -> void:
+	about_text.visible = false
+	help.visible = true
+
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed(\"help\"):
+		about_text.visible = !about_text.visible
+		help.visible = !about_text.visible
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_5wrml"]
+font_size = 8
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_i1wr8"]
+variation_embolden = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_g6v6n"]
+font = SubResource("FontVariation_i1wr8")
+font_size = 30
+font_color = Color(0.463331, 0.578407, 0.129551, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[node name="about_text" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="control" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 636.0
+offset_bottom = 476.0
+script = SubResource("GDScript_aiqpp")
+
+[node name="help" type="Label" parent="control"]
+self_modulate = Color(1, 1, 1, 0.439216)
+layout_mode = 1
+offset_right = 616.0
+offset_bottom = 15.0
+text = "Help: <F1>"
+label_settings = SubResource("LabelSettings_5wrml")
+
+[node name="about_text" type="VBoxContainer" parent="control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="control/about_text"]
+layout_mode = 2
+offset_right = 632.0
+offset_bottom = 45.0
+text = "Frogbox"
+label_settings = SubResource("LabelSettings_g6v6n")
+
+[node name="rich_text_label" type="RichTextLabel" parent="control/about_text"]
+layout_mode = 2
+offset_top = 49.0
+offset_right = 632.0
+offset_bottom = 187.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0.121569, 0.121569, 0.121569, 0.223529)
+theme_override_colors/table_even_row_bg = Color(0.152941, 0.152941, 0.152941, 0.219608)
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "Be frog. Collect \"water\". Find friends. Avoid toad!
+[u]Frog Grip[/u]: stick to surfaces! Must land perpendicularish to surface.
+[u]Slippy[/u]: If you hit a surface at a slight angle, frog might slip!
+
+[table=2]
+[cell]Jump[/cell][cell]LMB (press to aim, release to launch)[/cell]
+[cell]Jump abort[/cell][cell]RMB[/cell]
+[cell]Hop[/cell][cell]'c'[/cell]
+[cell]Teleport (cheat)[/cell][cell]<Tab>[/cell]
+[cell]Reset[/cell][cell]<Ctrl+Space>[/cell]
+[cell]Show/hide this[/cell][cell]<F1>[/cell]
+[/table]"
+fit_content_height = true

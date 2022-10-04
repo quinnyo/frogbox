@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ce5cpo2jl51dh"]
+
+[ext_resource type="Script" path="res://entity/toad/toad.gd" id="1_8yjk6"]
+[ext_resource type="Texture2D" uid="uid://8d36bqp20chw" path="res://entity/toad/toad.png" id="1_d6j1j"]
+[ext_resource type="Script" path="res://entity/enti2.gd" id="2_38d61"]
+[ext_resource type="Script" path="res://entity/toad/contact_damage.gd" id="4_lt2qt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pyg7x"]
+radius = 12.0
+
+[node name="toad" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_8yjk6")
+
+[node name="enti2" type="Node" parent="."]
+script = ExtResource("2_38d61")
+
+[node name="toad" type="Sprite2D" parent="."]
+texture = ExtResource("1_d6j1j")
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_pyg7x")
+
+[node name="contact_damage" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 256
+monitorable = false
+script = ExtResource("4_lt2qt")
+
+[node name="contact_damage" type="CollisionPolygon2D" parent="contact_damage"]
+polygon = PackedVector2Array(19, -15, 25, -11, 16, 15, -23, 15, -25, 7, -8, -8)

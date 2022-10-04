@@ -1,0 +1,419 @@
+[gd_scene load_steps=31 format=3 uid="uid://ca8ap15tppo3n"]
+
+[ext_resource type="Script" path="res://map/map.gd" id="1_qlqnw"]
+[ext_resource type="PackedScene" uid="uid://ddqlc55w5pssq" path="res://map/spawn_point.tscn" id="3_i1qn0"]
+[ext_resource type="Texture2D" uid="uid://wmohjhie16cn" path="res://backdrop.png" id="3_nxi8u"]
+[ext_resource type="PackedScene" uid="uid://vjs6wh4i6a0g" path="res://mess/props/pin_wheel.tscn" id="5_g1c02"]
+[ext_resource type="Script" path="res://map/zone_2d.gd" id="5_h8ogp"]
+[ext_resource type="Script" path="res://mess/friends/animated_sprite_thinger.gd" id="6_8rd6n"]
+[ext_resource type="PackedScene" uid="uid://crdakekd6onqs" path="res://mess/props/wibbler.tscn" id="6_11arw"]
+[ext_resource type="Animation" uid="uid://c7ba74brl0dul" path="res://mess/friends/nervous-jumper.anim" id="7_6yx1n"]
+[ext_resource type="PackedScene" uid="uid://b3b0v60a7hr3y" path="res://mess/props/bendy_shroom.tscn" id="7_lfi5s"]
+[ext_resource type="Animation" uid="uid://cco81p6cs02hy" path="res://mess/friends/bob.anim" id="8_bad2g"]
+[ext_resource type="PackedScene" uid="uid://dugae8nq7rnt4" path="res://mess/props/leafy_thing.tscn" id="8_hlk6j"]
+[ext_resource type="Script" path="res://addons/qnvr_poly_chunk/src/poly_chunk_2d.gd" id="10_7lbqy"]
+[ext_resource type="Texture2D" uid="uid://dpgwgs5028fdc" path="res://mess/props/ground_noise.png" id="10_o4hj1"]
+[ext_resource type="SpriteFrames" uid="uid://lxe8lenckv0i" path="res://entity/frog2/frames/frog.spriteframes.tres" id="10_wbrr2"]
+[ext_resource type="PackedScene" uid="uid://85giyiq00d4q" path="res://mess/droplet.tscn" id="11_2f02n"]
+[ext_resource type="PackedScene" uid="uid://ce5cpo2jl51dh" path="res://entity/toad/toad.tscn" id="12_ll40j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqiih"]
+size = Vector2(128, 1152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i40o"]
+size = Vector2(1984, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xw81c"]
+size = Vector2(130, 80)
+
+[sub_resource type="Animation" id="Animation_vieo0"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_rv2hg"]
+resource_name = "default"
+length = 7.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.5, 5.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [&"look_down", &"jumping", &"call_low", &"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.6, 2.7, 2.8, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(211, 3), Vector2(212, 3), Vector2(213, 3), Vector2(214, 3), Vector2(215, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cv6dj"]
+_data = {
+"RESET": SubResource("Animation_vieo0"),
+"default (2)": SubResource("Animation_rv2hg"),
+"nervous-jumper": ExtResource("7_6yx1n")
+}
+
+[sub_resource type="Animation" id="Animation_hnh7y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("friend3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ibqp"]
+_data = {
+"RESET": SubResource("Animation_hnh7y"),
+"bob": ExtResource("8_bad2g")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bntbq"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_40t2s"]
+blend_mode = 1
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6uohf"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jfuxi"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xewsi"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l32ex"]
+normal = Vector2(-1, 0)
+
+[node name="test-03" type="Node2D"]
+z_index = -1
+script = ExtResource("1_qlqnw")
+
+[node name="tank" type="Node2D" parent="."]
+
+[node name="static_body_2d" type="StaticBody2D" parent="tank"]
+collision_mask = 7
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="tank/static_body_2d"]
+position = Vector2(-256, -128)
+shape = SubResource("RectangleShape2D_qqiih")
+
+[node name="collision_shape_2d2" type="CollisionShape2D" parent="tank/static_body_2d"]
+position = Vector2(1600, -128)
+shape = SubResource("RectangleShape2D_qqiih")
+
+[node name="collision_shape_2d3" type="CollisionShape2D" parent="tank/static_body_2d"]
+position = Vector2(672, -640)
+shape = SubResource("RectangleShape2D_0i40o")
+
+[node name="collision_shape_2d4" type="CollisionShape2D" parent="tank/static_body_2d"]
+position = Vector2(672, 384)
+shape = SubResource("RectangleShape2D_0i40o")
+
+[node name="bg" type="Polygon2D" parent="tank"]
+z_index = -10
+color = Color(0.593134, 0.723958, 0.816157, 0.203922)
+polygon = PackedVector2Array(-192, 320, 1536, 320, 1536, -576, -192, -576)
+metadata/_edit_lock_ = true
+
+[node name="backdrop" type="Sprite2D" parent="tank/bg"]
+self_modulate = Color(0.815686, 0.815686, 0.815686, 1)
+show_behind_parent = true
+texture_repeat = 3
+position = Vector2(-208, -584)
+scale = Vector2(3.10173, 3.10173)
+texture = ExtResource("3_nxi8u")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 512)
+
+[node name="border" type="Polygon2D" parent="tank"]
+color = Color(0.776471, 1, 1, 0.65098)
+invert_enabled = true
+invert_border = 16.0
+polygon = PackedVector2Array(-192, 320, 1536, 320, 1536, -576, -192, -576)
+metadata/_edit_lock_ = true
+
+[node name="border_inner" type="Polygon2D" parent="tank/border"]
+z_index = 5
+z_as_relative = false
+color = Color(0.757204, 0.95563, 0.954843, 1)
+invert_enabled = true
+invert_border = 4.0
+polygon = PackedVector2Array(-192, 320, 1536, 320, 1536, -576, -192, -576)
+metadata/_edit_lock_ = true
+
+[node name="open" parent="." instance=ExtResource("3_i1qn0")]
+position = Vector2(426, -327)
+rotation = -0.0872665
+z_index = 9
+gizmo_extents = 24.0
+
+[node name="pini" type="Area2D" parent="."]
+visible = false
+position = Vector2(1050, 81)
+collision_mask = 2
+script = ExtResource("5_h8ogp")
+type = 1
+
+[node name="pini_collision_shape" type="CollisionShape2D" parent="pini"]
+position = Vector2(43, 31)
+shape = SubResource("RectangleShape2D_xw81c")
+
+[node name="cave" type="Node2D" parent="."]
+position = Vector2(921, 11)
+
+[node name="friend1" type="Node2D" parent="cave"]
+position = Vector2(91, 56)
+
+[node name="friend" type="AnimatedSprite2D" parent="cave/friend1"]
+modulate = Color(0.729412, 0.933333, 0.815686, 1)
+position = Vector2(0, -11)
+frames = ExtResource("10_wbrr2")
+animation = &"call_high"
+flip_h = true
+script = ExtResource("6_8rd6n")
+
+[node name="friend2" type="Node2D" parent="cave"]
+position = Vector2(205, 13)
+
+[node name="friend2" type="AnimatedSprite2D" parent="cave/friend2"]
+modulate = Color(1, 0.933333, 0.658824, 1)
+position = Vector2(6, -11)
+frames = ExtResource("10_wbrr2")
+animation = &"look_down"
+flip_h = true
+
+[node name="animation_player" type="AnimationPlayer" parent="cave/friend2/friend2"]
+libraries = {
+"": SubResource("AnimationLibrary_cv6dj")
+}
+
+[node name="friend3" type="Node2D" parent="cave"]
+position = Vector2(148, 51)
+
+[node name="friend3" type="AnimatedSprite2D" parent="cave/friend3"]
+position = Vector2(0, 16)
+frames = ExtResource("10_wbrr2")
+animation = &"jumping"
+flip_h = true
+
+[node name="animation_player" type="AnimationPlayer" parent="cave/friend3"]
+autoplay = "bob"
+libraries = {
+"": SubResource("AnimationLibrary_6ibqp")
+}
+
+[node name="cave2" type="Node2D" parent="cave"]
+texture_repeat = 2
+script = ExtResource("10_7lbqy")
+color = Color(0.719419, 0.526667, 0.45236, 1)
+color_stroke = Color(0.596078, 0.984314, 0.596078, 0.533333)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 8.0
+points = PackedVector2Array(26.0833, 11.75, 14.5833, -39.8333, -22.5, -78.75, -82.5, -62.5, -91, 5.5, -55.5597, 111.022, 39.8626, 115.222, 107.635, 153.859, 188.526, 183.062, 240.676, 168.981, 271.987, 109.631, 261.184, 66.9671, 267.828, -23.2197, 291.744, -77.6114, 244.017, -118.395, 129.812, -98.513, 58.8798, -91.7541, 28.4589, -73.6848, 43.2841, -22.5524, 73.0361, -20.0307, 133.488, -25.5467, 190.076, -28.644, 224.059, -24.0183, 233.497, 13.9676, 205.318, 13.5556, 205.307, 23.1846, 212.779, 55.3776, 236.752, 76.5905, 217.331, 97.5547, 215.616, 126.491, 187.238, 143.038, 139.758, 100.79, 121.847, 66.7027, 102.601, 56.4095, 78.984, 56.5575, 69.0855, 45.2785, 52.7686, 44.7107)
+
+[node name="water" type="Polygon2D" parent="cave/cave2"]
+visible = false
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_bntbq")
+position = Vector2(137, 63)
+color = Color(0, 0.28454, 0.287581, 1)
+polygon = PackedVector2Array(-80, -12, 110, -12, 110, 40, 80.2441, 97.7464, 0.236633, 92.3481, -80, 40)
+
+[node name="water2" type="Polygon2D" parent="cave/cave2"]
+visible = false
+material = SubResource("CanvasItemMaterial_bntbq")
+position = Vector2(137, 63)
+color = Color(0, 0.28454, 0.287581, 1)
+polygon = PackedVector2Array(-62, -12, 110, -12, 110, 40, 80.2441, 97.7464, 0.236633, 92.3481, 45, 75, 8, 44, -1, 32, -12, 11, -23, 1, -28, -2, -42, -6, -58, -6)
+
+[node name="cave_water" type="Node2D" parent="cave"]
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_40t2s")
+z_index = 10
+z_as_relative = false
+script = ExtResource("10_7lbqy")
+color = Color(0.14902, 0.25098, 0.282353, 1)
+stroke_thickness = 0.0
+join_cut_depth = 8.0
+points = PackedVector2Array(213.5, 52, 218.461, 60.4052, 236.752, 76.5905, 217.331, 97.5547, 215.616, 126.491, 187.238, 143.038, 139.758, 100.79, 121.847, 66.7027, 102.601, 56.4095, 78.984, 56.5575, 75, 52)
+collider_mode = 0
+
+[node name="TERRAIN" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="PolyChunk2D" type="Node2D" parent="TERRAIN"]
+texture_repeat = 2
+position = Vector2(0, -170)
+script = ExtResource("10_7lbqy")
+color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 20.0
+points = PackedVector2Array(44, 10.75, -16.5, 6.25, 30.7363, -40.2823, 170.421, -80.0685, 236, -50.5, 211.161, 6.2075, 161.08, 22.1684, 152.56, -24.9193, 127.5, 0, 110, 46)
+
+[node name="PolyChunk2D7" type="Node2D" parent="TERRAIN"]
+texture_repeat = 2
+position = Vector2(71, 0)
+script = ExtResource("10_7lbqy")
+color = Color(0.858824, 0.65098, 0.580392, 1)
+color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 8.0
+points = PackedVector2Array(120, -32, 96.5, -31.25, 64.84, -5.2534, 1.4929, -2.93191, -4, -63.25, -38, -24, -41, 35, 45, 98, 87, 44, 143, 33, 120.815, -9.6782)
+
+[node name="chunk0" type="Node2D" parent="."]
+position = Vector2(376, -296)
+
+[node name="Wibbler4" parent="chunk0" instance=ExtResource("6_11arw")]
+
+[node name="PolyChunk2D" type="Node2D" parent="chunk0"]
+texture_repeat = 2
+position = Vector2(-49, 54)
+script = ExtResource("10_7lbqy")
+color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 20.0
+points = PackedVector2Array(-45.1777, -121.815, -56.538, -8.8365, 74.1786, 26.1411, 171, -35, 143, -63, 42.1646, -51.6304)
+
+[node name="chunk6" type="Node2D" parent="."]
+position = Vector2(447, 13)
+
+[node name="leafy_thing" parent="chunk6" instance=ExtResource("8_hlk6j")]
+position = Vector2(-131, 23)
+
+[node name="PolyChunk2D6" type="Node2D" parent="chunk6"]
+texture_repeat = 2
+script = ExtResource("10_7lbqy")
+color = Color(0.858824, 0.65098, 0.580392, 1)
+color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 14.0
+points = PackedVector2Array(144.12, 12.3697, 88.25, -12.25, 0, -11, -72, -6, -121.91, 4.4966, -141.75, 15, -162, 40, -175.5, 91.75, -132.75, 114.5, -71.3004, 88.2613, 25.4312, 85.3388, 67.0873, 124.947, 137.282, 117.054, 172.478, 96.5279, 179.336, 59.3602)
+
+[node name="chunk5_mushpit" type="Node2D" parent="."]
+position = Vector2(724, 183)
+
+[node name="bendy_shroom" parent="chunk5_mushpit" instance=ExtResource("7_lfi5s")]
+
+[node name="PolyChunk2D5" type="Node2D" parent="chunk5_mushpit"]
+texture_repeat = 2
+position = Vector2(152, -34)
+script = ExtResource("10_7lbqy")
+color = Color(0.858824, 0.65098, 0.580392, 1)
+color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 8.0
+points = PackedVector2Array(81.0834, 46.5833, 87.0474, -30.2997, -9.08325, -42.0834, -62, 12.25, -134.25, 29, -196.729, 22.9364, -259.499, 32.2897, -291, 20, -292.125, -25.1549, -322, -37, -351, -24, -362.856, 19.857, -329, 127, -255, 171, -168, 171, -102, 131, -65, 171, -1, 171, 18, 140, 25.8151, 92.3218)
+
+[node name="chunk8" type="Node2D" parent="."]
+
+[node name="Wibbler" parent="chunk8" instance=ExtResource("6_11arw")]
+position = Vector2(-29, 35)
+
+[node name="Wibbler2" parent="chunk8" instance=ExtResource("6_11arw")]
+position = Vector2(-96, 24)
+
+[node name="Wibbler3" parent="chunk8" instance=ExtResource("6_11arw")]
+position = Vector2(-144, 32)
+
+[node name="PolyChunk2D8" type="Node2D" parent="chunk8"]
+texture_repeat = 2
+position = Vector2(-32, 32)
+script = ExtResource("10_7lbqy")
+color = Color(0.495331, 0.304907, 0.204743, 1)
+color_stroke = Color(0.389537, 0.493565, 0.32515, 0.772549)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 8.0
+points = PackedVector2Array(-16.3984, -8.28915, -90, -6, -149, -19, -160, -16, -160, 288, 416, 289, 403, 191, 383, 97, 359, 68, 319, 63, 283, 55, 228, 64, 197, 86, 157, 69, 141, 40, 113, 4, 58, -3, 1.74422, 3.55693)
+
+[node name="droplets" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="droplet" parent="droplets" instance=ExtResource("11_2f02n")]
+position = Vector2(112, -235)
+
+[node name="droplet2" parent="droplets" instance=ExtResource("11_2f02n")]
+position = Vector2(3, -211)
+
+[node name="droplet3" parent="droplets" instance=ExtResource("11_2f02n")]
+position = Vector2(203, -238)
+
+[node name="droplet4" parent="droplets" instance=ExtResource("11_2f02n")]
+position = Vector2(155, -170)
+
+[node name="droplet5" parent="droplets" instance=ExtResource("11_2f02n")]
+position = Vector2(134, -171)
+
+[node name="droplet6" parent="droplets" instance=ExtResource("11_2f02n")]
+position = Vector2(296, -368)
+
+[node name="droplet7" parent="droplets" instance=ExtResource("11_2f02n")]
+position = Vector2(576, -200)
+
+[node name="pin_wheel" parent="." instance=ExtResource("5_g1c02")]
+position = Vector2(636, -184)
+
+[node name="toad" parent="." instance=ExtResource("12_ll40j")]
+position = Vector2(254, -94)
+
+[node name="toad2" parent="." instance=ExtResource("12_ll40j")]
+position = Vector2(513, -18)
+
+[node name="toad4" parent="." instance=ExtResource("12_ll40j")]
+position = Vector2(650, 142)
+
+[node name="toad3" parent="." instance=ExtResource("12_ll40j")]
+position = Vector2(49, -243)
+face_left = false
+
+[node name="world_bounds_min" type="Area2D" parent="."]
+position = Vector2(-340, -720)
+collision_layer = 0
+collision_mask = 7
+script = ExtResource("5_h8ogp")
+type = 2
+
+[node name="top" type="CollisionShape2D" parent="world_bounds_min"]
+position = Vector2(250, 0)
+shape = SubResource("WorldBoundaryShape2D_6uohf")
+
+[node name="left" type="CollisionShape2D" parent="world_bounds_min"]
+position = Vector2(0, 250)
+shape = SubResource("WorldBoundaryShape2D_jfuxi")
+
+[node name="world_bounds_max" type="Area2D" parent="."]
+position = Vector2(1676, 462)
+collision_layer = 0
+collision_mask = 7
+script = ExtResource("5_h8ogp")
+type = 2
+
+[node name="bottom" type="CollisionShape2D" parent="world_bounds_max"]
+position = Vector2(-250, 0)
+shape = SubResource("WorldBoundaryShape2D_xewsi")
+
+[node name="right" type="CollisionShape2D" parent="world_bounds_max"]
+position = Vector2(0, -250)
+shape = SubResource("WorldBoundaryShape2D_l32ex")
+
+[connection signal="entity_entered" from="pini" to="." method="_on_pini_entity_entered"]
+[connection signal="animation_finished" from="cave/friend1/friend" to="cave/friend1/friend" method="_on_animation_finished"]

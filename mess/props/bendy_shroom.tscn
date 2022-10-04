@@ -1,0 +1,95 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3b0v60a7hr3y"]
+
+[ext_resource type="Script" path="res://mess/bendygon_2d.gd" id="1_44oxs"]
+[ext_resource type="Shader" path="res://mess/bendygon_2d.gdshader" id="1_ju8df"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lcdv8"]
+shader = ExtResource("1_ju8df")
+shader_parameter/flex_curve = 1.35
+shader_parameter/rest_axis = Vector2(0, -1)
+shader_parameter/rest_length = 100.0
+shader_parameter/tip_position = Vector2(0, -96)
+
+[sub_resource type="Gradient" id="Gradient_rtfk3"]
+offsets = PackedFloat32Array(0.555066, 0.665198)
+colors = PackedColorArray(0.764706, 0.662745, 0.627451, 1, 0.397336, 0.309774, 0.279336, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_buqf2"]
+frequency = 0.063
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7fm2f"]
+width = 128
+height = 128
+seamless = true
+color_ramp = SubResource("Gradient_rtfk3")
+noise = SubResource("FastNoiseLite_buqf2")
+
+[node name="bendy_shroom" type="StaticBody2D"]
+
+[node name="no_collision_shape_2d" type="CollisionShape2D" parent="."]
+editor_description = "(hide no collision shape warning in editor)"
+visible = false
+
+[node name="join_stem" type="PinJoint2D" parent="."]
+position = Vector2(-6, 0)
+node_a = NodePath("..")
+node_b = NodePath("../stem_mass")
+
+[node name="join_stem2" type="PinJoint2D" parent="."]
+position = Vector2(39, 0)
+node_a = NodePath("..")
+node_b = NodePath("../stem_mass")
+softness = 2.0
+
+[node name="stem_mass" type="RigidBody2D" parent="."]
+position = Vector2(0, -48)
+collision_layer = 0
+mass = 4.0
+linear_damp = 0.375
+
+[node name="collision_polygon_2d" type="CollisionPolygon2D" parent="stem_mass"]
+polygon = PackedVector2Array(-3, -47, 3, -48, 17, 5, 2, 6)
+
+[node name="join_cap" type="PinJoint2D" parent="stem_mass"]
+position = Vector2(0, -35)
+node_a = NodePath("..")
+node_b = NodePath("../../cap")
+
+[node name="join_cap2" type="PinJoint2D" parent="stem_mass"]
+position = Vector2(13, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../cap")
+softness = 2.0
+
+[node name="cap" type="RigidBody2D" parent="."]
+position = Vector2(0, -96)
+collision_mask = 3
+mass = 5.0
+angular_damp = 0.6
+
+[node name="collision_polygon_2d" type="CollisionPolygon2D" parent="cap"]
+polygon = PackedVector2Array(-64, 8, -68, 4, -60, -4, -16, -12, 12, -12, -12, 4, -12, 4)
+
+[node name="collision_polygon_2d2" type="CollisionPolygon2D" parent="cap"]
+polygon = PackedVector2Array(12, -12, 68, 0, 64, 8, -12, 4, -12, 4)
+
+[node name="remote_transform_2d" type="RemoteTransform2D" parent="cap"]
+remote_path = NodePath("../../canvas_group/cap2")
+
+[node name="canvas_group" type="CanvasGroup" parent="."]
+
+[node name="Bendygon2D" type="Polygon2D" parent="canvas_group"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_lcdv8")
+texture = SubResource("NoiseTexture2D_7fm2f")
+polygon = PackedVector2Array(14, 6, -6, 3, -8, -10, -8, -26, -7, -41, -3, -55, 0, -62, 0, -71, -3, -83, -5, -95, 0, -98, 5, -94, 10, -79, 13, -66, 14, -56, 16, -45, 21, -38, 25, -26, 27, -11, 26, 1, -1.94411, -17.74, -1.33657, -33.6573, 0.243011, -48.4812, 3.15917, -57.4727, 2.91616, -67.5577, 1.33658, -79.9514, 0.121506, -93.0741, 17.9426, -17.9426, 17.4641, -31.1005, 12.9984, -40.5901, 10.0478, -50.638, 9.17065, -61.1643, 7.49601, -72.6475, 3.26953, -86.0447)
+uv = PackedVector2Array(14, 6, -6, 3, -8, -10, -8, -26, -7, -41, -3, -55, 0, -62, 0, -71, -3, -83, -5, -95, 0, -98, 5, -94, 10, -79, 13, -66, 14, -56, 16, -45, 21, -38, 25, -26, 27, -11, 26, 1, -1.94411, -17.74, -1.33657, -33.6573, 0.243011, -48.4812, 3.15917, -57.4727, 2.91616, -67.5577, 1.33658, -79.9514, 0.121506, -93.0741, 17.9426, -17.9426, 17.4641, -31.1005, 12.9984, -40.5901, 10.0478, -50.638, 9.17065, -61.1643, 7.49601, -72.6475, 3.26953, -86.0447)
+polygons = [PackedInt32Array(2, 20, 3), PackedInt32Array(3, 21, 4), PackedInt32Array(4, 22, 5), PackedInt32Array(5, 23, 6), PackedInt32Array(6, 24, 7), PackedInt32Array(7, 25, 8), PackedInt32Array(8, 26, 9), PackedInt32Array(0, 20, 2, 1), PackedInt32Array(0, 19, 18, 27), PackedInt32Array(20, 27, 0), PackedInt32Array(20, 21, 3), PackedInt32Array(27, 28, 21, 20), PackedInt32Array(27, 17, 18), PackedInt32Array(27, 17, 28), PackedInt32Array(17, 16, 28), PackedInt32Array(29, 16, 15), PackedInt32Array(15, 30, 14), PackedInt32Array(14, 31, 13), PackedInt32Array(13, 32, 12), PackedInt32Array(12, 33, 11), PackedInt32Array(11, 26, 9, 10), PackedInt32Array(8, 33, 11, 26), PackedInt32Array(25, 33, 8), PackedInt32Array(25, 24, 7), PackedInt32Array(24, 23, 6), PackedInt32Array(22, 23, 5), PackedInt32Array(21, 22, 4), PackedInt32Array(21, 28, 29, 22), PackedInt32Array(29, 30, 23, 22), PackedInt32Array(30, 31, 23), PackedInt32Array(31, 24, 23), PackedInt32Array(31, 32, 24), PackedInt32Array(32, 25, 24), PackedInt32Array(32, 33, 25), PackedInt32Array(32, 12, 33), PackedInt32Array(31, 13, 32), PackedInt32Array(14, 30, 31), PackedInt32Array(15, 29, 30), PackedInt32Array(16, 28, 29)]
+internal_vertex_count = 14
+script = ExtResource("1_44oxs")
+tip_node_path = NodePath("../../cap")
+
+[node name="cap2" type="Polygon2D" parent="canvas_group"]
+position = Vector2(0, -96)
+color = Color(1, 0.721569, 0.839216, 1)
+polygon = PackedVector2Array(-65.1499, 6.85005, -66.7999, 5.20004, -66.75, 2.75, -61.75, -2.25, -58.3016, -4.30881, -21.28, -11.04, -11.9, -12, 2.70004, -12, 16.3366, -11.0707, 66.1015, -0.406815, 68, 1, 64.9908, 6.26617, 62.0948, 7.89973, -12, 4, -61.7823, 7.8294)

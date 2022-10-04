@@ -1,0 +1,45 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://lxe8lenckv0i"]
+
+[ext_resource type="Texture2D" uid="uid://10jcxlba3x27" path="res://entity/frog2/frames/call_low/frog_call_low_1.png" id="1_vuwho"]
+[ext_resource type="Texture2D" uid="uid://b85qoelixg0g7" path="res://entity/frog2/frames/call_high/frog_call_high_1.png" id="1_wt28c"]
+[ext_resource type="Texture2D" uid="uid://bxg15rkjgdtg0" path="res://entity/frog2/frames/call_low/frog_call_low_2.png" id="2_iynj7"]
+[ext_resource type="Texture2D" uid="uid://cl5pagja4502p" path="res://entity/frog2/frames/call_high/frog_call_high_3.png" id="3_ldvka"]
+[ext_resource type="Texture2D" uid="uid://rpixfnl6qr8w" path="res://entity/frog2/frames/call_low/frog_call_low_3.png" id="3_tlgjt"]
+[ext_resource type="Texture2D" uid="uid://co8lt7u37u0rm" path="res://entity/frog2/frames/call_high/frog_call_high_4.png" id="4_725xo"]
+[ext_resource type="Texture2D" uid="uid://b7k81v7ghp6yb" path="res://entity/frog2/frames/frog.png" id="8_lriik"]
+[ext_resource type="Texture2D" uid="uid://bvo36s8x5otpr" path="res://entity/frog2/frames/jumping.png" id="9_4xspm"]
+[ext_resource type="Texture2D" uid="uid://bhxeabs47rhek" path="res://entity/frog2/frames/look_down.png" id="10_ct4q2"]
+[ext_resource type="Texture2D" uid="uid://viwdml1v4xdx" path="res://entity/frog2/frames/look_up.png" id="11_2k5sj"]
+
+[resource]
+animations = [{
+"frames": [ExtResource("1_wt28c"), ExtResource("3_ldvka"), ExtResource("4_725xo"), ExtResource("3_ldvka")],
+"loop": true,
+"name": &"call_high",
+"speed": 8.0
+}, {
+"frames": [ExtResource("1_vuwho"), ExtResource("2_iynj7"), ExtResource("3_tlgjt"), ExtResource("2_iynj7")],
+"loop": true,
+"name": &"call_low",
+"speed": 2.0
+}, {
+"frames": [ExtResource("8_lriik")],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [ExtResource("9_4xspm")],
+"loop": true,
+"name": &"jumping",
+"speed": 5.0
+}, {
+"frames": [ExtResource("10_ct4q2")],
+"loop": true,
+"name": &"look_down",
+"speed": 5.0
+}, {
+"frames": [ExtResource("11_2k5sj")],
+"loop": true,
+"name": &"look_up",
+"speed": 5.0
+}]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://t2kpw227csp7"]
+
+[ext_resource type="Script" path="res://mess/pointer.gd" id="1_jjqc0"]
+[ext_resource type="Shader" path="res://mess/bendygon_2d.gdshader" id="1_na8b3"]
+[ext_resource type="Script" path="res://mess/bendygon_2d.gd" id="2_41u8a"]
+[ext_resource type="Script" path="res://mess/bendy_line_2d.gd" id="4_dkbid"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3wf6"]
+shader = ExtResource("1_na8b3")
+shader_parameter/flex_curve = 1.35
+shader_parameter/rest_axis = Vector2(0, -1)
+shader_parameter/rest_length = 100.0
+shader_parameter/tip_position = Vector2(0, -100)
+
+[node name="node_2d" type="Node2D"]
+
+[node name="bendygon_2d" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_h3wf6")
+position = Vector2(74, 238)
+color = Color(0.823529, 0.380392, 0.521569, 1)
+polygon = PackedVector2Array(4, 0, 50, 0, 57, -23, 50, -50, 44, -70, 32, -90, 27, -110, 21, -93, 13, -75, 6, -53, 0, -27)
+script = ExtResource("2_41u8a")
+tip_node_path = NodePath("../pointer")
+flex_bias = 1.47994
+
+[node name="pointer" type="Node2D" parent="."]
+process_priority = -1
+z_index = 1
+script = ExtResource("1_jjqc0")
+
+[node name="BendyLine2D" type="Node2D" parent="."]
+script = ExtResource("4_dkbid")
+tip_node_path = NodePath("../pointer")

@@ -1,0 +1,141 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5ax3m7i7k5gb"]
+
+[ext_resource type="Script" path="res://main/newmain.gd" id="1_1t11b"]
+[ext_resource type="Script" path="res://main/game_stage.gd" id="2_kjo5w"]
+[ext_resource type="PackedScene" uid="uid://diyh3q0lp0tb2" path="res://mess/about_text.tscn" id="3_37o3a"]
+[ext_resource type="Script" path="res://gui/overlay/notifications.gd" id="5_p4nm2"]
+[ext_resource type="PackedScene" uid="uid://dtoyeowkrkaux" path="res://gui/overlay/widgets/game_over.tscn" id="6_56uf3"]
+
+[sub_resource type="Animation" id="Animation_m00sv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ufg77"]
+resource_name = "close"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rect:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.594603, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vey6x"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rect:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1.68179, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2l5ti"]
+_data = {
+"RESET": SubResource("Animation_m00sv"),
+"close": SubResource("Animation_ufg77"),
+"open": SubResource("Animation_vey6x")
+}
+
+[node name="main" type="Node"]
+process_mode = 3
+script = ExtResource("1_1t11b")
+
+[node name="stage" type="CanvasLayer" parent="."]
+layer = 0
+script = ExtResource("2_kjo5w")
+
+[node name="hud" type="CanvasLayer" parent="."]
+
+[node name="about_text" parent="hud" instance=ExtResource("3_37o3a")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 636.0
+offset_bottom = 476.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="curtain" type="Control" parent="hud"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="rect" type="ColorRect" parent="hud/curtain"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180392, 0.129412, 0.137255, 1)
+
+[node name="animation_player" type="AnimationPlayer" parent="hud/curtain"]
+libraries = {
+"": SubResource("AnimationLibrary_2l5ti")
+}
+
+[node name="overlay" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="bg" type="ColorRect" parent="overlay"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="game_over" parent="overlay" instance=ExtResource("6_56uf3")]
+visible = false
+
+[node name="notifications" type="VBoxContainer" parent="overlay"]
+unique_name_in_owner = true
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+script = ExtResource("5_p4nm2")
+
+[node name="debug_overlay" type="CanvasLayer" parent="."]
+layer = 100
+
+[connection signal="scenario_complete" from="." to="overlay/game_over" method="show_scenario_result"]
+[connection signal="scenario_loading" from="." to="hud/curtain/animation_player" method="play" binds= ["close"]]
+[connection signal="scenario_ready" from="." to="hud/curtain/animation_player" method="queue" binds= ["open"]]
+[connection signal="choice_menu" from="overlay/game_over" to="." method="_on_game_over_choice_menu"]
+[connection signal="choice_next" from="overlay/game_over" to="." method="_on_game_over_choice_next"]
+[connection signal="choice_retry" from="overlay/game_over" to="." method="_on_game_over_choice_retry"]

@@ -1,0 +1,112 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtoyeowkrkaux"]
+
+[ext_resource type="Script" path="res://gui/overlay/widgets/game_over.gd" id="1_3m40e"]
+
+[node name="game_over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3m40e")
+metadata/_edit_use_custom_anchors = false
+
+[node name="color_rect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.227451, 0.227451, 0.227451, 0.501961)
+
+[node name="center_container" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="v_box_container" type="VBoxContainer" parent="center_container"]
+offset_left = 197.0
+offset_top = 124.0
+offset_right = 442.0
+offset_bottom = 356.0
+alignment = 1
+
+[node name="label_title" type="Label" parent="center_container/v_box_container"]
+unique_name_in_owner = true
+offset_right = 245.0
+offset_bottom = 70.0
+theme_type_variation = &"HeaderLarge"
+text = "game over"
+horizontal_alignment = 1
+
+[node name="label_message" type="Label" parent="center_container/v_box_container"]
+unique_name_in_owner = true
+offset_top = 74.0
+offset_right = 245.0
+offset_bottom = 100.0
+text = "cane toads are bad"
+
+[node name="choice_next" type="Button" parent="center_container/v_box_container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2i(90, 40)
+offset_left = 77.0
+offset_top = 104.0
+offset_right = 167.0
+offset_bottom = 144.0
+size_flags_horizontal = 4
+text = "Next"
+
+[node name="h_box_container" type="HBoxContainer" parent="center_container/v_box_container"]
+offset_left = 30.0
+offset_top = 148.0
+offset_right = 214.0
+offset_bottom = 188.0
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="choice_retry" type="Button" parent="center_container/v_box_container/h_box_container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2i(90, 40)
+offset_right = 90.0
+offset_bottom = 40.0
+focus_neighbor_left = NodePath("../choice_menu")
+focus_neighbor_top = NodePath("../../choice_app_quit")
+focus_next = NodePath("../choice_menu")
+focus_previous = NodePath("../../choice_app_quit")
+text = "Retry"
+
+[node name="choice_menu" type="Button" parent="center_container/v_box_container/h_box_container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2i(90, 40)
+offset_left = 94.0
+offset_right = 184.0
+offset_bottom = 40.0
+focus_neighbor_top = NodePath("../../choice_app_quit")
+focus_neighbor_right = NodePath("../choice_retry")
+focus_next = NodePath("../../choice_app_quit")
+focus_previous = NodePath("../choice_retry")
+disabled = true
+text = "Menu"
+
+[node name="choice_app_quit" type="Button" parent="center_container/v_box_container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2i(90, 40)
+offset_left = 77.0
+offset_top = 192.0
+offset_right = 167.0
+offset_bottom = 232.0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../h_box_container/choice_retry")
+focus_neighbor_right = NodePath("../h_box_container/choice_menu")
+focus_neighbor_bottom = NodePath("../h_box_container/choice_retry")
+focus_next = NodePath("../h_box_container/choice_retry")
+focus_previous = NodePath("../h_box_container/choice_menu")
+text = "Quit App"
+
+[connection signal="pressed" from="center_container/v_box_container/choice_next" to="." method="_on_choice_next_pressed"]
+[connection signal="pressed" from="center_container/v_box_container/h_box_container/choice_retry" to="." method="_on_choice_retry_pressed"]
+[connection signal="pressed" from="center_container/v_box_container/h_box_container/choice_menu" to="." method="_on_choice_menu_pressed"]
+[connection signal="pressed" from="center_container/v_box_container/choice_app_quit" to="." method="_on_choice_app_quit_pressed"]

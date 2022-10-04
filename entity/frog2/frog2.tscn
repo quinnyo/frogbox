@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://drgv8gjh5fwmj"]
+
+[ext_resource type="Script" path="res://entity/frog2/frog_status.gd" id="1_ec8ex"]
+[ext_resource type="Script" path="res://entity/frog2/karak/karak_body.gd" id="2_yxvv7"]
+[ext_resource type="Script" path="res://mess/autocam/view_target_2d.gd" id="3_66kmc"]
+[ext_resource type="Script" path="res://entity/enti2.gd" id="4_6r672"]
+[ext_resource type="Script" path="res://entity/frog2/pointer_input.gd" id="4_8tjp8"]
+[ext_resource type="Script" path="res://entity/frog2/sprite.gd" id="4_cd0hd"]
+[ext_resource type="Script" path="res://entity/frog2/frog_pointer_brain.gd" id="4_ffq68"]
+[ext_resource type="Script" path="res://entity/frog2/karak/debug_canvas.gd" id="5_qb602"]
+[ext_resource type="Script" path="res://entity/frog2/water_draw.gd" id="6_ry4p6"]
+[ext_resource type="SpriteFrames" uid="uid://lxe8lenckv0i" path="res://entity/frog2/frames/frog.spriteframes.tres" id="9_jc63x"]
+[ext_resource type="Script" path="res://entity/frog2/hitbox_2d.gd" id="9_sk2if"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ge181"]
+
+[node name="Frog" type="RigidBody2D"]
+collision_layer = 2
+mass = 2.0
+custom_integrator = true
+continuous_cd = 2
+max_contacts_reported = 16
+contact_monitor = true
+can_sleep = false
+script = ExtResource("1_ec8ex")
+
+[node name="enti2" type="Node" parent="."]
+script = ExtResource("4_6r672")
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ge181")
+disabled = true
+
+[node name="pointer_input" type="Node2D" parent="."]
+process_priority = -1
+z_index = 10
+z_as_relative = false
+script = ExtResource("4_8tjp8")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+frames = ExtResource("9_jc63x")
+script = ExtResource("4_cd0hd")
+
+[node name="water_draw" type="Node2D" parent="sprite"]
+script = ExtResource("6_ry4p6")
+
+[node name="canvas_ref" type="Marker2D" parent="sprite/water_draw"]
+position = Vector2(-8, 1)
+rotation = -0.785397
+scale = Vector2(1, 0.8)
+skew = 0.0698131
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 260
+script = ExtResource("9_sk2if")
+
+[node name="collision_polygon_2d" type="CollisionPolygon2D" parent="hitbox"]
+polygon = PackedVector2Array(10, 10, 4, 0, 10, -6, 7, -10, 4, -10, -4, -2, -10, 4, -10, 10)
+
+[node name="KarakBody2D" type="Node2D" parent="."]
+script = ExtResource("2_yxvv7")
+
+[node name="brain" type="Node2D" parent="KarakBody2D"]
+script = ExtResource("4_ffq68")
+
+[node name="debug_canvas" type="Node2D" parent="KarakBody2D"]
+script = ExtResource("5_qb602")
+
+[node name="ViewTarget2D" type="Node2D" parent="."]
+script = ExtResource("3_66kmc")
+
+[node name="collision_polygon_2d" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-6, 10, -10, 6, -10, -6, -6, -10, 6, -10, 10, -6, 10, 6, 6, 10)
+
+[connection signal="flip_h_changed" from="." to="sprite" method="_on_frog_flip_h_changed"]
+[connection signal="look_y_changed" from="." to="sprite" method="_on_frog_look_y_changed"]
+[connection signal="water_updated" from="." to="sprite/water_draw" method="set_water_count"]
+[connection signal="moved" from="pointer_input" to="." method="set_look_target"]
+[connection signal="moved" from="pointer_input" to="KarakBody2D/brain" method="_on_pointer_moved"]
+[connection signal="droplet_entered" from="hitbox" to="." method="collect_droplet"]

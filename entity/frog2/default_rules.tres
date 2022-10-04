@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bv7di760sgaq3"]
+
+[ext_resource type="Script" path="res://entity/frog2/frog_rules.gd" id="1_mtrn3"]
+
+[resource]
+script = ExtResource("1_mtrn3")
+jump_speed_max = 650.0

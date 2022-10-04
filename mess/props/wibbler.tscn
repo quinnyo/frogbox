@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://crdakekd6onqs"]
+
+[ext_resource type="Script" path="res://mess/bendy_line_2d.gd" id="1_bhcwc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l6apx"]
+absorbent = true
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ykwaj"]
+radius = 8.0
+height = 90.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u18yg"]
+radius = 1.0
+
+[node name="Wibbler" type="Node2D"]
+
+[node name="stem" type="Node2D" parent="."]
+show_behind_parent = true
+script = ExtResource("1_bhcwc")
+tip_node_path = NodePath("../Head/head_base")
+nsegments = 12
+flex_bias = 0.766063
+width = 4.0
+default_color = Color(0.618643, 0.835519, 0.399648, 1)
+
+[node name="Head" type="RigidBody2D" parent="."]
+position = Vector2(0, -96)
+collision_mask = 7
+mass = 4.0
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 60)
+physics_material_override = SubResource("PhysicsMaterial_l6apx")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+position = Vector2(0, -48)
+shape = SubResource("CapsuleShape2D_ykwaj")
+
+[node name="head_base" type="Node2D" parent="Head"]
+position = Vector2(0, -3)
+
+[node name="polygon_2d" type="Polygon2D" parent="Head/head_base"]
+color = Color(0.369308, 0.212696, 0.0106711, 1)
+polygon = PackedVector2Array(3, -1, 3, 3, -3, 3, -3, -1)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Head/head_base"]
+position = Vector2(0, -45)
+color = Color(0.858824, 0.74902, 0.466667, 1)
+polygon = PackedVector2Array(-2, -45, 2, -45, 6, -43, 8, -39, 8, 39, 6, 43, 2, 45, -2, 45, -6, 43, -8, 39, -8, -39, -6, -43)
+
+[node name="Base" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base"]
+shape = SubResource("CircleShape2D_u18yg")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("../Base")
+node_b = NodePath("../Head")
+softness = 1.0
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2(0, -32)
+node_a = NodePath("../Base")
+node_b = NodePath("../Head")
+softness = 1.0

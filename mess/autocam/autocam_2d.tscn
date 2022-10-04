@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh5gpylek3rh0"]
+
+[ext_resource type="Script" path="res://mess/autocam/autocam_2d.gd" id="1_sg786"]
+
+[node name="autocam_2d" type="Node2D"]
+process_priority = 9
+script = ExtResource("1_sg786")
+current = true
+limit_smoothing_enabled = true
+smoothing_enabled = true
+smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_right_margin = 0.1

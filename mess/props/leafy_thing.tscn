@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=3 uid="uid://dugae8nq7rnt4"]
+
+[ext_resource type="Script" path="res://mess/bendy_line_2d.gd" id="1_xjcaa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_48npf"]
+radius = 1.0
+
+[node name="leafy_thing" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="no_collision_shape_2d" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_48npf")
+disabled = true
+
+[node name="stem_r" type="Node2D" parent="."]
+position = Vector2(-1, -13)
+script = ExtResource("1_xjcaa")
+tip_node_path = NodePath("../leaf_r/base")
+flex_bias = 1.01083
+width = 4.0
+default_color = Color(0.517647, 0.705882, 0.298039, 1)
+
+[node name="leaf_r" type="RigidBody2D" parent="."]
+position = Vector2(4, -92)
+mass = 2.0
+center_of_mass_mode = 1
+
+[node name="collision_polygon_2d" type="CollisionPolygon2D" parent="leaf_r"]
+position = Vector2(58.2, -22.2)
+polygon = PackedVector2Array(85, 3, 40, -1, -21, 0, -54, 13, -59, 25)
+one_way_collision = true
+
+[node name="polygon_2d" type="Polygon2D" parent="leaf_r"]
+position = Vector2(58.2, -22.2)
+color = Color(0.392157, 0.713726, 0.239216, 1)
+polygon = PackedVector2Array(84.8, 3.2, 43, -1, -22.2, 0.199997, -54, 13, -58.2, 17.2, -55.2, 22.2, -50, 16, -21, 4, 45, 2)
+
+[node name="base" type="Polygon2D" parent="leaf_r"]
+color = Color(0.517647, 0.705882, 0.298039, 1)
+polygon = PackedVector2Array(-2, 3, 2, 4, 4, -3, 0, -6, -3, -2)
+
+[node name="pin_r" type="PinJoint2D" parent="."]
+position = Vector2(0, -44)
+node_a = NodePath("..")
+node_b = NodePath("../leaf_r")
+
+[node name="pin_r2" type="PinJoint2D" parent="."]
+position = Vector2(0, -21)
+node_a = NodePath("..")
+node_b = NodePath("../leaf_r")
+softness = 2.0
+
+[node name="stem_l" type="Node2D" parent="."]
+position = Vector2(-4, -16)
+script = ExtResource("1_xjcaa")
+tip_node_path = NodePath("../leaf_l/base")
+width = 3.0
+default_color = Color(0.517647, 0.705882, 0.298039, 1)
+
+[node name="leaf_l" type="RigidBody2D" parent="."]
+position = Vector2(-10, -82)
+mass = 1.5
+center_of_mass_mode = 1
+
+[node name="collision_polygon_2d" type="CollisionPolygon2D" parent="leaf_l"]
+position = Vector2(50.2, -24.2)
+polygon = PackedVector2Array(-41.2, 24.2, -50.2, 13.2, -78.2, 2.2, -121.2, -0.800003, -135.2, 1.2, -143.2, 6.2)
+one_way_collision = true
+
+[node name="polygon_2d" type="Polygon2D" parent="leaf_l"]
+position = Vector2(-50, -24.2)
+scale = Vector2(-1, 1)
+color = Color(0.392157, 0.713726, 0.239216, 1)
+polygon = PackedVector2Array(35, 1.2, 21, -0.800003, -1, 0.199997, -22, 2.2, -50, 13.2, -57, 21.2, -55, 24.2, -45, 15.2, -19, 5.2, 20, 2.2, 44, 6.2)
+
+[node name="base" type="Polygon2D" parent="leaf_l"]
+position = Vector2(6, -1)
+color = Color(0.517647, 0.705882, 0.298039, 1)
+polygon = PackedVector2Array(1, -3, 4, 1, 2, 5, -2, 4, -3, -1)
+
+[node name="pin_l" type="PinJoint2D" parent="."]
+position = Vector2(0, -37)
+node_a = NodePath("..")
+node_b = NodePath("../leaf_l")
+softness = 2.0
+
+[node name="pin_l2" type="PinJoint2D" parent="."]
+position = Vector2(0, -9)
+node_a = NodePath("..")
+node_b = NodePath("../leaf_l")
+
+[node name="polygon_2d" type="Polygon2D" parent="."]
+color = Color(0.517647, 0.705882, 0.298039, 1)
+polygon = PackedVector2Array(-12, -3, -11, 2, 7, 4, 14, 2, 13, -2, 10, -5, 7, -14, 3, -19, -2, -21, -4, -18, -7, -20, -10, -15, -11, -7)

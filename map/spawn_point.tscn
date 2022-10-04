@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddqlc55w5pssq"]
+
+[ext_resource type="Script" path="res://map/spawn_point.gd" id="1_dmusa"]
+
+[node name="open" type="Marker2D"]
+script = ExtResource("1_dmusa")
