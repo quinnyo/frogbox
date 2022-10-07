@@ -1,8 +1,8 @@
 [gd_scene load_steps=31 format=3 uid="uid://ca8ap15tppo3n"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_qlqnw"]
+[ext_resource type="Texture2D" path="res://backdrop.dds" id="3_e4x02"]
 [ext_resource type="PackedScene" uid="uid://ddqlc55w5pssq" path="res://map/spawn_point.tscn" id="3_i1qn0"]
-[ext_resource type="Texture2D" uid="uid://wmohjhie16cn" path="res://backdrop.png" id="3_nxi8u"]
 [ext_resource type="PackedScene" uid="uid://vjs6wh4i6a0g" path="res://mess/props/pin_wheel.tscn" id="5_g1c02"]
 [ext_resource type="Script" path="res://map/zone_2d.gd" id="5_h8ogp"]
 [ext_resource type="Script" path="res://mess/friends/animated_sprite_thinger.gd" id="6_8rd6n"]
@@ -128,22 +128,17 @@ shape = SubResource("RectangleShape2D_0i40o")
 position = Vector2(672, 384)
 shape = SubResource("RectangleShape2D_0i40o")
 
+[node name="backdrop-2" type="Sprite2D" parent="tank"]
+position = Vector2(-216, -642)
+scale = Vector2(1.35607, 1.35607)
+texture = ExtResource("3_e4x02")
+centered = false
+
 [node name="bg" type="Polygon2D" parent="tank"]
-z_index = -10
+visible = false
 color = Color(0.593134, 0.723958, 0.816157, 0.203922)
 polygon = PackedVector2Array(-192, 320, 1536, 320, 1536, -576, -192, -576)
 metadata/_edit_lock_ = true
-
-[node name="backdrop" type="Sprite2D" parent="tank/bg"]
-self_modulate = Color(0.815686, 0.815686, 0.815686, 1)
-show_behind_parent = true
-texture_repeat = 3
-position = Vector2(-208, -584)
-scale = Vector2(3.10173, 3.10173)
-texture = ExtResource("3_nxi8u")
-centered = false
-region_enabled = true
-region_rect = Rect2(0, 0, 1024, 512)
 
 [node name="border" type="Polygon2D" parent="tank"]
 color = Color(0.776471, 1, 1, 0.65098)
