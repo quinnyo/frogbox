@@ -161,6 +161,7 @@ _global_script_class_icons={
 config/name="Frogbox"
 run/main_scene="res://main/newmain.tscn"
 config/features=PackedStringArray("4.0")
+run/max_fps=300
 boot_splash/show_image=false
 config/icon="res://icon.png"
 
@@ -318,8 +319,7 @@ abort={
 
 [quinn]
 
-display/unfocused_target_fps=60
-display/target_fps=300
+display/max_fps_unfocused=60
 
 [rendering]
 
