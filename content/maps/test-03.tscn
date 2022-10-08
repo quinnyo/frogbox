@@ -218,6 +218,10 @@ libraries = {
 "": SubResource("AnimationLibrary_6ibqp")
 }
 
+[node name="leafy_thing" parent="cave" instance=ExtResource("8_hlk6j")]
+position = Vector2(253, -96)
+rotation = 0.261799
+
 [node name="cave2" type="Node2D" parent="cave"]
 texture_repeat = 2
 script = ExtResource("10_7lbqy")
@@ -225,7 +229,7 @@ color = Color(0.719419, 0.526667, 0.45236, 1)
 color_stroke = Color(0.596078, 0.984314, 0.596078, 0.533333)
 texture = ExtResource("10_o4hj1")
 join_cut_depth = 8.0
-points = PackedVector2Array(26.0833, 11.75, 14.5833, -39.8333, -22.5, -78.75, -82.5, -62.5, -91, 5.5, -55.5597, 111.022, 39.8626, 115.222, 107.635, 153.859, 188.526, 183.062, 240.676, 168.981, 271.987, 109.631, 261.184, 66.9671, 267.828, -23.2197, 291.744, -77.6114, 244.017, -118.395, 129.812, -98.513, 58.8798, -91.7541, 28.4589, -73.6848, 43.2841, -22.5524, 73.0361, -20.0307, 133.488, -25.5467, 190.076, -28.644, 224.059, -24.0183, 233.497, 13.9676, 205.318, 13.5556, 205.307, 23.1846, 212.779, 55.3776, 236.752, 76.5905, 217.331, 97.5547, 215.616, 126.491, 187.238, 143.038, 139.758, 100.79, 121.847, 66.7027, 102.601, 56.4095, 78.984, 56.5575, 69.0855, 45.2785, 52.7686, 44.7107)
+points = PackedVector2Array(32, 22, -7, 26, -46, -6, -88, -10, -60, 64, -55.5597, 111.022, 39.8626, 115.222, 107.635, 153.859, 188.526, 183.062, 240.676, 168.981, 271.987, 109.631, 261.184, 66.9671, 267.828, -23.2197, 291.744, -77.6114, 244.017, -118.395, 129.812, -98.513, 58.8798, -91.7541, 18, -95, -43, -57, -2, -45, 38, -17, 123, -28, 190.076, -28.644, 224.059, -24.0183, 233.497, 13.9676, 205.318, 13.5556, 205.307, 23.1846, 212.779, 55.3776, 236.752, 76.5905, 217.331, 97.5547, 215.616, 126.491, 187.238, 143.038, 139.758, 100.79, 121.847, 66.7027, 102.601, 56.4095, 78.984, 56.5575, 69.0855, 45.2785, 52.7686, 44.7107)
 
 [node name="water" type="Polygon2D" parent="cave/cave2"]
 visible = false
@@ -327,7 +331,7 @@ color = Color(0.858824, 0.65098, 0.580392, 1)
 color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
 texture = ExtResource("10_o4hj1")
 join_cut_depth = 8.0
-points = PackedVector2Array(81.0834, 46.5833, 87.0474, -30.2997, -9.08325, -42.0834, -62, 12.25, -134.25, 29, -196.729, 22.9364, -259.499, 32.2897, -291, 20, -292.125, -25.1549, -322, -37, -351, -24, -362.856, 19.857, -329, 127, -255, 171, -168, 171, -102, 131, -65, 171, -1, 171, 18, 140, 25.8151, 92.3218)
+points = PackedVector2Array(81.0834, 46.5833, 74, -35, -9, -47, -21, -7, -62, 12.25, -134.25, 29, -196.729, 22.9364, -259.499, 32.2897, -291, 20, -290, -32, -322, -37, -371, -32, -362.856, 19.857, -372, 93, -329, 127, -266, 140, -189, 135, -99, 149, -99, 118, -34, 106, 18, 140, 25.8151, 92.3218)
 
 [node name="chunk8" type="Node2D" parent="."]
 
@@ -415,6 +419,23 @@ shape = SubResource("WorldBoundaryShape2D_xewsi")
 
 [node name="right" type="CollisionShape2D" parent="world_bounds_max"]
 shape = SubResource("WorldBoundaryShape2D_l32ex")
+
+[node name="chunk99_cornertime" type="Node2D" parent="."]
+position = Vector2(1536, 320)
+
+[node name="PolyChunk2D" type="Node2D" parent="chunk99_cornertime"]
+script = ExtResource("10_7lbqy")
+points = PackedVector2Array(-16, -41, 0, -66, 0, -122, -25, -110, -46, -91, -69, -39, -101, -25, -118, 0, -22, 0)
+
+[node name="PolyChunk2D-2" type="Node2D" parent="chunk99_cornertime"]
+position = Vector2(0, -260)
+script = ExtResource("10_7lbqy")
+points = PackedVector2Array(-4, -25, 1, -38, 0, -100, -24, -83, -70, -70, -69, -39)
+
+[node name="PolyChunk2D-3" type="Node2D" parent="chunk99_cornertime"]
+position = Vector2(0, -520)
+script = ExtResource("10_7lbqy")
+points = PackedVector2Array(0, 13, 0, -18, -16, -22, -48, -9, -84, 27, -61, 61, -54, 23, -28, 10)
 
 [connection signal="entity_entered" from="pini" to="." method="_on_pini_entity_entered"]
 [connection signal="animation_finished" from="cave/friend1/friend" to="cave/friend1/friend" method="_on_animation_finished"]
