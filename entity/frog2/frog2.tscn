@@ -29,7 +29,6 @@ script = ExtResource("4_6r672")
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ge181")
-disabled = true
 
 [node name="pointer_input" type="Node2D" parent="."]
 process_priority = -1
@@ -69,9 +68,6 @@ script = ExtResource("5_qb602")
 
 [node name="ViewTarget2D" type="Node2D" parent="."]
 script = ExtResource("3_66kmc")
-
-[node name="collision_polygon_2d" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-6, 10, -10, 6, -10, -6, -6, -10, 6, -10, 10, -6, 10, 6, 6, 10)
 
 [connection signal="flip_h_changed" from="." to="sprite" method="_on_frog_flip_h_changed"]
 [connection signal="look_y_changed" from="." to="sprite" method="_on_frog_look_y_changed"]
