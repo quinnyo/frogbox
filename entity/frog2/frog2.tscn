@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://drgv8gjh5fwmj"]
+[gd_scene load_steps=15 format=3 uid="uid://drgv8gjh5fwmj"]
 
 [ext_resource type="Script" path="res://entity/frog2/frog_status.gd" id="1_ec8ex"]
 [ext_resource type="Script" path="res://entity/frog2/karak/karak_body.gd" id="2_yxvv7"]
@@ -13,6 +13,13 @@
 [ext_resource type="Script" path="res://entity/frog2/hitbox_2d.gd" id="9_sk2if"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ge181"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ckw1c"]
+radius = 2.82843
+height = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2wc8"]
+size = Vector2(15, 10)
 
 [node name="Frog" type="RigidBody2D"]
 collision_layer = 2
@@ -54,8 +61,16 @@ collision_layer = 256
 collision_mask = 260
 script = ExtResource("9_sk2if")
 
-[node name="collision_polygon_2d" type="CollisionPolygon2D" parent="hitbox"]
-polygon = PackedVector2Array(10, 10, 4, 0, 10, -6, 7, -10, 4, -10, -4, -2, -10, 4, -10, 10)
+[node name="collision_shape_2d" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(2, -3)
+rotation = 0.785397
+shape = SubResource("CapsuleShape2D_ckw1c")
+debug_color = Color(0.282353, 0.631373, 0, 0.419608)
+
+[node name="collision_shape_2d-2" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_h2wc8")
+debug_color = Color(0.282353, 0.631373, 0, 0.419608)
 
 [node name="KarakBody2D" type="Node2D" parent="."]
 script = ExtResource("2_yxvv7")
