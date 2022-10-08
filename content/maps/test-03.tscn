@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ca8ap15tppo3n"]
+[gd_scene load_steps=32 format=3 uid="uid://ca8ap15tppo3n"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_qlqnw"]
 [ext_resource type="Texture2D" path="res://backdrop.dds" id="3_e4x02"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dpgwgs5028fdc" path="res://mess/props/ground_noise.png" id="10_o4hj1"]
 [ext_resource type="SpriteFrames" uid="uid://lxe8lenckv0i" path="res://entity/frog2/frames/frog.spriteframes.tres" id="10_wbrr2"]
 [ext_resource type="PackedScene" uid="uid://85giyiq00d4q" path="res://mess/droplet.tscn" id="11_2f02n"]
+[ext_resource type="Script" path="res://mess/bendy_line_2d.gd" id="12_ktuvj"]
 [ext_resource type="PackedScene" uid="uid://ce5cpo2jl51dh" path="res://entity/toad/toad.tscn" id="12_ll40j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqiih"]
@@ -229,7 +230,7 @@ color = Color(0.719419, 0.526667, 0.45236, 1)
 color_stroke = Color(0.596078, 0.984314, 0.596078, 0.533333)
 texture = ExtResource("10_o4hj1")
 join_cut_depth = 8.0
-points = PackedVector2Array(32, 22, -7, 26, -46, -6, -88, -10, -60, 64, -55.5597, 111.022, 39.8626, 115.222, 107.635, 153.859, 188.526, 183.062, 240.676, 168.981, 271.987, 109.631, 261.184, 66.9671, 267.828, -23.2197, 291.744, -77.6114, 244.017, -118.395, 129.812, -98.513, 58.8798, -91.7541, 18, -95, -43, -57, -2, -45, 38, -17, 123, -28, 190.076, -28.644, 224.059, -24.0183, 233.497, 13.9676, 205.318, 13.5556, 205.307, 23.1846, 212.779, 55.3776, 236.752, 76.5905, 217.331, 97.5547, 215.616, 126.491, 187.238, 143.038, 139.758, 100.79, 121.847, 66.7027, 102.601, 56.4095, 78.984, 56.5575, 69.0855, 45.2785, 52.7686, 44.7107)
+points = PackedVector2Array(32, 22, -7, 26, -38, 13, -54, -11, -85, -8, -106, 2, -60, 64, -55.5597, 111.022, 39.8626, 115.222, 107.635, 153.859, 188.526, 183.062, 240.676, 168.981, 271.987, 109.631, 261.184, 66.9671, 267.828, -23.2197, 291.744, -77.6114, 244.017, -118.395, 129.812, -98.513, 58.8798, -91.7541, 7, -66, 3, -27, 38, -17, 123, -28, 190.076, -28.644, 224.059, -24.0183, 233.497, 13.9676, 205.318, 13.5556, 205.307, 23.1846, 212.779, 55.3776, 236.752, 76.5905, 217.331, 97.5547, 215.616, 126.491, 187.238, 143.038, 139.758, 100.79, 121.847, 66.7027, 102.601, 56.4095, 78.984, 56.5575, 69.0855, 45.2785, 52.7686, 44.7107)
 
 [node name="water" type="Polygon2D" parent="cave/cave2"]
 visible = false
@@ -257,6 +258,21 @@ stroke_thickness = 0.0
 join_cut_depth = 8.0
 points = PackedVector2Array(213.5, 52, 218.461, 60.4052, 236.752, 76.5905, 217.331, 97.5547, 215.616, 126.491, 187.238, 143.038, 139.758, 100.79, 121.847, 66.7027, 102.601, 56.4095, 78.984, 56.5575, 75, 52)
 collider_mode = 0
+
+[node name="doorthing" type="Node2D" parent="cave"]
+modulate = Color(1, 1, 1, 0.701961)
+position = Vector2(5, -36)
+
+[node name="BendyLine2D" type="Node2D" parent="cave/doorthing"]
+script = ExtResource("12_ktuvj")
+rest_axis = Vector2(-1, 0)
+tip_node_path = NodePath("../tip")
+nsegments = 12
+flex_bias = 0.523236
+default_color = Color(0.886275, 0.572549, 0, 1)
+
+[node name="tip" type="Node2D" parent="cave/doorthing"]
+position = Vector2(-83, 27)
 
 [node name="TERRAIN" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
