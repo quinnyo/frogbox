@@ -134,22 +134,23 @@ scale = Vector2(1.35607, 1.35607)
 texture = ExtResource("3_e4x02")
 centered = false
 
-[node name="bg" type="Polygon2D" parent="tank"]
-visible = false
-color = Color(0.593134, 0.723958, 0.816157, 0.203922)
+[node name="border" type="Polygon2D" parent="tank"]
+z_index = 1
+color = Color(0.776471, 1, 1, 0.65098)
+invert_enabled = true
+invert_border = 20.0
 polygon = PackedVector2Array(-192, 320, 1536, 320, 1536, -576, -192, -576)
 metadata/_edit_lock_ = true
 
-[node name="border" type="Polygon2D" parent="tank"]
-color = Color(0.776471, 1, 1, 0.65098)
+[node name="border_bg" type="Polygon2D" parent="tank/border"]
+show_behind_parent = true
+color = Color(0, 0, 0, 1)
 invert_enabled = true
-invert_border = 16.0
+invert_border = 10000.0
 polygon = PackedVector2Array(-192, 320, 1536, 320, 1536, -576, -192, -576)
 metadata/_edit_lock_ = true
 
 [node name="border_inner" type="Polygon2D" parent="tank/border"]
-z_index = 5
-z_as_relative = false
 color = Color(0.757204, 0.95563, 0.954843, 1)
 invert_enabled = true
 invert_border = 4.0
@@ -256,15 +257,6 @@ collider_mode = 0
 [node name="TERRAIN" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
-[node name="PolyChunk2D" type="Node2D" parent="TERRAIN"]
-texture_repeat = 2
-position = Vector2(0, -170)
-script = ExtResource("10_7lbqy")
-color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
-texture = ExtResource("10_o4hj1")
-join_cut_depth = 20.0
-points = PackedVector2Array(44, 10.75, -16.5, 6.25, 30.7363, -40.2823, 170.421, -80.0685, 236, -50.5, 211.161, 6.2075, 161.08, 22.1684, 152.56, -24.9193, 127.5, 0, 110, 46)
-
 [node name="PolyChunk2D7" type="Node2D" parent="TERRAIN"]
 texture_repeat = 2
 position = Vector2(71, 0)
@@ -280,6 +272,15 @@ position = Vector2(376, -296)
 
 [node name="Wibbler4" parent="chunk0" instance=ExtResource("6_11arw")]
 
+[node name="PolyChunk2D-2" type="Node2D" parent="chunk0"]
+texture_repeat = 2
+position = Vector2(179, -86)
+script = ExtResource("10_7lbqy")
+color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 20.0
+points = PackedVector2Array(-45, -196, -29, -18, -49, 40, -93, 86, -84, 149, 17, 76, 75, -196)
+
 [node name="PolyChunk2D" type="Node2D" parent="chunk0"]
 texture_repeat = 2
 position = Vector2(-49, 54)
@@ -287,7 +288,16 @@ script = ExtResource("10_7lbqy")
 color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
 texture = ExtResource("10_o4hj1")
 join_cut_depth = 20.0
-points = PackedVector2Array(-45.1777, -121.815, -56.538, -8.8365, 74.1786, 26.1411, 171, -35, 143, -63, 42.1646, -51.6304)
+points = PackedVector2Array(-45.1777, -121.815, -56.538, -8.8365, 37, 33, 127, 24, 179, -19, 173, -80, 106, -57, 42.1646, -51.6304)
+
+[node name="PolyChunk2D-3" type="Node2D" parent="chunk0"]
+texture_repeat = 2
+position = Vector2(-376, 126)
+script = ExtResource("10_7lbqy")
+color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 20.0
+points = PackedVector2Array(44, 10.75, -16.5, 6.25, 30.7363, -40.2823, 170.421, -80.0685, 236, -50.5, 293, -133, 345, -73, 278, -14, 220, -19, 161.08, 22.1684, 154, -21, 127.5, 0, 110, 46)
 
 [node name="chunk6" type="Node2D" parent="."]
 position = Vector2(447, 13)
@@ -347,19 +357,19 @@ metadata/_edit_lock_ = true
 position = Vector2(112, -235)
 
 [node name="droplet2" parent="droplets" instance=ExtResource("11_2f02n")]
-position = Vector2(3, -211)
+position = Vector2(277, -374)
 
 [node name="droplet3" parent="droplets" instance=ExtResource("11_2f02n")]
 position = Vector2(203, -238)
 
 [node name="droplet4" parent="droplets" instance=ExtResource("11_2f02n")]
-position = Vector2(155, -170)
+position = Vector2(511, -536)
 
 [node name="droplet5" parent="droplets" instance=ExtResource("11_2f02n")]
 position = Vector2(134, -171)
 
 [node name="droplet6" parent="droplets" instance=ExtResource("11_2f02n")]
-position = Vector2(296, -368)
+position = Vector2(326, -224)
 
 [node name="droplet7" parent="droplets" instance=ExtResource("11_2f02n")]
 position = Vector2(576, -200)
@@ -381,33 +391,29 @@ position = Vector2(49, -243)
 face_left = false
 
 [node name="world_bounds_min" type="Area2D" parent="."]
-position = Vector2(-340, -720)
+position = Vector2(-208, -592)
 collision_layer = 0
 collision_mask = 7
 script = ExtResource("5_h8ogp")
 type = 2
 
 [node name="top" type="CollisionShape2D" parent="world_bounds_min"]
-position = Vector2(250, 0)
 shape = SubResource("WorldBoundaryShape2D_6uohf")
 
 [node name="left" type="CollisionShape2D" parent="world_bounds_min"]
-position = Vector2(0, 250)
 shape = SubResource("WorldBoundaryShape2D_jfuxi")
 
 [node name="world_bounds_max" type="Area2D" parent="."]
-position = Vector2(1676, 462)
+position = Vector2(1552, 336)
 collision_layer = 0
 collision_mask = 7
 script = ExtResource("5_h8ogp")
 type = 2
 
 [node name="bottom" type="CollisionShape2D" parent="world_bounds_max"]
-position = Vector2(-250, 0)
 shape = SubResource("WorldBoundaryShape2D_xewsi")
 
 [node name="right" type="CollisionShape2D" parent="world_bounds_max"]
-position = Vector2(0, -250)
 shape = SubResource("WorldBoundaryShape2D_l32ex")
 
 [connection signal="entity_entered" from="pini" to="." method="_on_pini_entity_entered"]
