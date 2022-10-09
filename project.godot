@@ -186,12 +186,12 @@ window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+window/stretch/mode.web="canvas_items"
 
 [editor]
 
 node_naming/name_num_separator=3
 node_naming/name_casing=2
-export/convert_text_resources_to_binary=false
 
 [editor_plugins]
 
