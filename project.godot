@@ -184,7 +184,7 @@ window/size/viewport_height=480
 window/size/resizable=false
 window/size/window_width_override=1920
 window/size/window_height_override=1080
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [editor]
@@ -328,4 +328,5 @@ display/max_fps_unfocused=60
 
 renderer/rendering_method.mobile="gl_compatibility"
 driver/depth_prepass/enable=false
+2d/snap/snap_2d_transforms_to_pixel=true
 textures/canvas_textures/default_texture_filter=0
