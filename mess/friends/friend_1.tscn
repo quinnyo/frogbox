@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqyru0hthfklr"]
+
+[ext_resource type="SpriteFrames" uid="uid://lxe8lenckv0i" path="res://entity/frog2/frames/frog.spriteframes.tres" id="1_hjqnk"]
+[ext_resource type="Script" path="res://mess/friends/animated_sprite_thinger.gd" id="2_cfff0"]
+
+[node name="friend1" type="Node2D"]
+position = Vector2(91, 56)
+
+[node name="friend" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.729412, 0.933333, 0.815686, 1)
+position = Vector2(0, -11)
+frames = ExtResource("1_hjqnk")
+animation = &"call_high"
+flip_h = true
+script = ExtResource("2_cfff0")
+
+[connection signal="animation_finished" from="friend" to="friend" method="_on_animation_finished"]

@@ -1,97 +1,36 @@
-[gd_scene load_steps=32 format=3 uid="uid://ca8ap15tppo3n"]
+[gd_scene load_steps=26 format=3 uid="uid://ca8ap15tppo3n"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_qlqnw"]
 [ext_resource type="Texture2D" path="res://backdrop.dds" id="3_e4x02"]
 [ext_resource type="PackedScene" uid="uid://ddqlc55w5pssq" path="res://map/spawn_point.tscn" id="3_i1qn0"]
 [ext_resource type="PackedScene" uid="uid://vjs6wh4i6a0g" path="res://mess/props/pin_wheel.tscn" id="5_g1c02"]
 [ext_resource type="Script" path="res://map/zone_2d.gd" id="5_h8ogp"]
-[ext_resource type="Script" path="res://mess/friends/animated_sprite_thinger.gd" id="6_8rd6n"]
 [ext_resource type="PackedScene" uid="uid://crdakekd6onqs" path="res://mess/props/wibbler.tscn" id="6_11arw"]
-[ext_resource type="Animation" uid="uid://c7ba74brl0dul" path="res://mess/friends/nervous-jumper.anim" id="7_6yx1n"]
 [ext_resource type="PackedScene" uid="uid://b3b0v60a7hr3y" path="res://mess/props/bendy_shroom.tscn" id="7_lfi5s"]
-[ext_resource type="Animation" uid="uid://cco81p6cs02hy" path="res://mess/friends/bob.anim" id="8_bad2g"]
 [ext_resource type="PackedScene" uid="uid://dugae8nq7rnt4" path="res://mess/props/leafy_thing.tscn" id="8_hlk6j"]
+[ext_resource type="PackedScene" uid="uid://bqyru0hthfklr" path="res://mess/friends/friend_1.tscn" id="8_yoar0"]
+[ext_resource type="PackedScene" uid="uid://bwq3yvsgocgfd" path="res://mess/friends/friend_2.tscn" id="9_44she"]
 [ext_resource type="Script" path="res://addons/qnvr_poly_chunk/src/poly_chunk_2d.gd" id="10_7lbqy"]
+[ext_resource type="PackedScene" uid="uid://byf8grauxwk0f" path="res://mess/friends/friend_3.tscn" id="10_o2u2q"]
 [ext_resource type="Texture2D" uid="uid://dpgwgs5028fdc" path="res://mess/props/ground_noise.png" id="10_o4hj1"]
-[ext_resource type="SpriteFrames" uid="uid://lxe8lenckv0i" path="res://entity/frog2/frames/frog.spriteframes.tres" id="10_wbrr2"]
 [ext_resource type="PackedScene" uid="uid://85giyiq00d4q" path="res://mess/droplet.tscn" id="11_2f02n"]
 [ext_resource type="Script" path="res://mess/bendy_line_2d.gd" id="12_ktuvj"]
 [ext_resource type="PackedScene" uid="uid://ce5cpo2jl51dh" path="res://entity/toad/toad.tscn" id="12_ll40j"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqiih"]
-size = Vector2(128, 1152)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i40o"]
-size = Vector2(1984, 128)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw81c"]
 size = Vector2(130, 80)
-
-[sub_resource type="Animation" id="Animation_vieo0"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_rv2hg"]
-resource_name = "default"
-length = 7.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 2.5, 5.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [&"look_down", &"jumping", &"call_low", &"default"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.6, 2.7, 2.8, 2.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(211, 3), Vector2(212, 3), Vector2(213, 3), Vector2(214, 3), Vector2(215, 3)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cv6dj"]
-_data = {
-"RESET": SubResource("Animation_vieo0"),
-"default (2)": SubResource("Animation_rv2hg"),
-"nervous-jumper": ExtResource("7_6yx1n")
-}
-
-[sub_resource type="Animation" id="Animation_hnh7y"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("friend3:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 16)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ibqp"]
-_data = {
-"RESET": SubResource("Animation_hnh7y"),
-"bob": ExtResource("8_bad2g")
-}
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bntbq"]
 blend_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_40t2s"]
 blend_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqiih"]
+size = Vector2(128, 1152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i40o"]
+size = Vector2(1984, 128)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6uohf"]
 normal = Vector2(0, 1)
@@ -108,35 +47,214 @@ normal = Vector2(-1, 0)
 z_index = -1
 script = ExtResource("1_qlqnw")
 
-[node name="tank" type="Node2D" parent="."]
-
-[node name="static_body_2d" type="StaticBody2D" parent="tank"]
-collision_mask = 7
-
-[node name="collision_shape_2d" type="CollisionShape2D" parent="tank/static_body_2d"]
-position = Vector2(-256, -128)
-shape = SubResource("RectangleShape2D_qqiih")
-
-[node name="collision_shape_2d2" type="CollisionShape2D" parent="tank/static_body_2d"]
-position = Vector2(1600, -128)
-shape = SubResource("RectangleShape2D_qqiih")
-
-[node name="collision_shape_2d3" type="CollisionShape2D" parent="tank/static_body_2d"]
-position = Vector2(672, -640)
-shape = SubResource("RectangleShape2D_0i40o")
-
-[node name="collision_shape_2d4" type="CollisionShape2D" parent="tank/static_body_2d"]
-position = Vector2(672, 384)
-shape = SubResource("RectangleShape2D_0i40o")
-
-[node name="backdrop-2" type="Sprite2D" parent="tank"]
+[node name="backdrop" type="Sprite2D" parent="."]
 position = Vector2(-216, -642)
 scale = Vector2(1.35607, 1.35607)
 texture = ExtResource("3_e4x02")
 centered = false
+metadata/_edit_lock_ = true
+
+[node name="chunk_open" type="Node2D" parent="."]
+position = Vector2(376, -296)
+
+[node name="open" parent="chunk_open" instance=ExtResource("3_i1qn0")]
+position = Vector2(50, -31)
+rotation = -0.0872665
+z_index = 9
+gizmo_extents = 24.0
+
+[node name="Wibbler4" parent="chunk_open" instance=ExtResource("6_11arw")]
+
+[node name="PolyChunk2D-2" type="Node2D" parent="chunk_open"]
+texture_repeat = 2
+position = Vector2(179, -86)
+script = ExtResource("10_7lbqy")
+color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 20.0
+points = PackedVector2Array(-45, -196, -29, -18, -49, 40, -93, 86, -84, 149, 17, 76, 75, -196)
+
+[node name="PolyChunk2D" type="Node2D" parent="chunk_open"]
+texture_repeat = 2
+position = Vector2(-49, 54)
+script = ExtResource("10_7lbqy")
+color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 20.0
+points = PackedVector2Array(-45.1777, -121.815, -56.538, -8.8365, 37, 33, 127, 24, 179, -19, 173, -80, 106, -57, 42.1646, -51.6304)
+
+[node name="PolyChunk2D-3" type="Node2D" parent="chunk_open"]
+texture_repeat = 2
+position = Vector2(-376, 126)
+script = ExtResource("10_7lbqy")
+color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 20.0
+points = PackedVector2Array(44, 10.75, -16.5, 6.25, 30.7363, -40.2823, 170.421, -80.0685, 236, -50.5, 293, -133, 345, -73, 278, -14, 220, -19, 161.08, 22.1684, 154, -21, 127.5, 0, 110, 46)
+
+[node name="chunk_cave" type="Node2D" parent="."]
+position = Vector2(921, 11)
+
+[node name="pini" type="Area2D" parent="chunk_cave"]
+position = Vector2(129, 70)
+collision_mask = 2
+script = ExtResource("5_h8ogp")
+type = 1
+
+[node name="pini_collision_shape" type="CollisionShape2D" parent="chunk_cave/pini"]
+position = Vector2(43, 31)
+shape = SubResource("RectangleShape2D_xw81c")
+
+[node name="leafy_thing" parent="chunk_cave" instance=ExtResource("8_hlk6j")]
+position = Vector2(253, -96)
+rotation = 0.261799
+
+[node name="cave2" type="Node2D" parent="chunk_cave"]
+texture_repeat = 2
+script = ExtResource("10_7lbqy")
+color = Color(0.719419, 0.526667, 0.45236, 1)
+color_stroke = Color(0.596078, 0.984314, 0.596078, 0.533333)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 8.0
+points = PackedVector2Array(32, 22, -7, 26, -38, 13, -54, -11, -85, -8, -106, 2, -60, 64, -55.5597, 111.022, 39.8626, 115.222, 107.635, 153.859, 188.526, 183.062, 240.676, 168.981, 271.987, 109.631, 261.184, 66.9671, 267.828, -23.2197, 291.744, -77.6114, 244.017, -118.395, 129.812, -98.513, 58.8798, -91.7541, 7, -66, 3, -27, 38, -17, 130, -25, 194, -40, 225, -26, 238, 13, 205, 13, 205, 23, 212.779, 55.3776, 236.752, 76.5905, 217.331, 97.5547, 215.616, 126.491, 187.238, 143.038, 139.758, 100.79, 121.847, 66.7027, 106, 56, 77, 56, 72.9985, 50.5794, 52.7686, 44.7107)
+
+[node name="water" type="Polygon2D" parent="chunk_cave/cave2"]
+visible = false
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_bntbq")
+position = Vector2(137, 63)
+color = Color(0, 0.28454, 0.287581, 1)
+polygon = PackedVector2Array(-80, -12, 110, -12, 110, 40, 80.2441, 97.7464, 0.236633, 92.3481, -80, 40)
+
+[node name="water2" type="Polygon2D" parent="chunk_cave/cave2"]
+visible = false
+material = SubResource("CanvasItemMaterial_bntbq")
+position = Vector2(137, 63)
+color = Color(0, 0.28454, 0.287581, 1)
+polygon = PackedVector2Array(-62, -12, 110, -12, 110, 40, 80.2441, 97.7464, 0.236633, 92.3481, 45, 75, 8, 44, -1, 32, -12, 11, -23, 1, -28, -2, -42, -6, -58, -6)
+
+[node name="friend1" parent="chunk_cave" instance=ExtResource("8_yoar0")]
+position = Vector2(88, 56)
+
+[node name="friend2" parent="chunk_cave" instance=ExtResource("9_44she")]
+position = Vector2(211, 13)
+metadata/_edit_pinned_properties_ = [&"position"]
+
+[node name="friend3" parent="chunk_cave" instance=ExtResource("10_o2u2q")]
+
+[node name="cave_water" type="Node2D" parent="chunk_cave"]
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_40t2s")
+z_index = 10
+z_as_relative = false
+script = ExtResource("10_7lbqy")
+color = Color(0.14902, 0.25098, 0.282353, 1)
+stroke_thickness = 0.0
+join_cut_depth = 8.0
+points = PackedVector2Array(213.5, 52, 218.461, 60.4052, 236.752, 76.5905, 217.331, 97.5547, 215.616, 126.491, 187.238, 143.038, 139.758, 100.79, 121.847, 66.7027, 106, 56, 77, 56, 74, 52)
+collider_mode = 0
+
+[node name="doorthing" type="Node2D" parent="chunk_cave"]
+modulate = Color(1, 1, 1, 0.701961)
+position = Vector2(5, -36)
+
+[node name="BendyLine2D" type="Node2D" parent="chunk_cave/doorthing"]
+script = ExtResource("12_ktuvj")
+rest_axis = Vector2(-1, 0)
+tip_node_path = NodePath("../tip")
+nsegments = 12
+flex_bias = 0.523236
+default_color = Color(0.886275, 0.572549, 0, 1)
+
+[node name="tip" type="Node2D" parent="chunk_cave/doorthing"]
+position = Vector2(-83, 27)
+
+[node name="chunk_wibblecity" type="Node2D" parent="."]
+
+[node name="Wibbler" parent="chunk_wibblecity" instance=ExtResource("6_11arw")]
+position = Vector2(-29, 35)
+
+[node name="Wibbler2" parent="chunk_wibblecity" instance=ExtResource("6_11arw")]
+position = Vector2(-96, 24)
+
+[node name="Wibbler3" parent="chunk_wibblecity" instance=ExtResource("6_11arw")]
+position = Vector2(-144, 32)
+
+[node name="toad_turner" type="Node2D" parent="chunk_wibblecity"]
+texture_repeat = 2
+position = Vector2(71, 0)
+script = ExtResource("10_7lbqy")
+color = Color(0.858824, 0.65098, 0.580392, 1)
+color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 8.0
+points = PackedVector2Array(120, -32, 96.5, -31.25, 64.84, -5.2534, 1.4929, -2.93191, -4, -63.25, -38, -24, -41, 35, 45, 98, 87, 44, 143, 33, 120.815, -9.6782)
+
+[node name="PolyChunk2D8" type="Node2D" parent="chunk_wibblecity"]
+texture_repeat = 2
+position = Vector2(-32, 32)
+script = ExtResource("10_7lbqy")
+color = Color(0.495331, 0.304907, 0.204743, 1)
+color_stroke = Color(0.389537, 0.493565, 0.32515, 0.772549)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 8.0
+points = PackedVector2Array(-16.3984, -8.28915, -90, -6, -149, -19, -160, -16, -160, 288, 416, 289, 403, 191, 383, 97, 359, 68, 319, 63, 283, 55, 228, 64, 197, 86, 157, 69, 141, 40, 113, 4, 58, -3, 1.74422, 3.55693)
+
+[node name="chunk_hasaplant" type="Node2D" parent="."]
+position = Vector2(447, 13)
+
+[node name="leafy_thing" parent="chunk_hasaplant" instance=ExtResource("8_hlk6j")]
+position = Vector2(-131, 23)
+
+[node name="PolyChunk2D6" type="Node2D" parent="chunk_hasaplant"]
+texture_repeat = 2
+script = ExtResource("10_7lbqy")
+color = Color(0.858824, 0.65098, 0.580392, 1)
+color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 14.0
+points = PackedVector2Array(144.12, 12.3697, 88.25, -12.25, 0, -11, -72, -6, -121.91, 4.4966, -141.75, 15, -162, 40, -175.5, 91.75, -132.75, 114.5, -71.3004, 88.2613, 25.4312, 85.3388, 67.0873, 124.947, 137.282, 117.054, 172.478, 96.5279, 179.336, 59.3602)
+
+[node name="chunk_mushpit" type="Node2D" parent="."]
+position = Vector2(724, 183)
+
+[node name="bendy_shroom" parent="chunk_mushpit" instance=ExtResource("7_lfi5s")]
+
+[node name="PolyChunk2D5" type="Node2D" parent="chunk_mushpit"]
+texture_repeat = 2
+position = Vector2(152, -34)
+script = ExtResource("10_7lbqy")
+color = Color(0.858824, 0.65098, 0.580392, 1)
+color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
+texture = ExtResource("10_o4hj1")
+join_cut_depth = 8.0
+points = PackedVector2Array(81.0834, 46.5833, 74, -35, -9, -47, -21, -7, -62, 12.25, -134.25, 29, -196.729, 22.9364, -259.499, 32.2897, -291, 20, -290, -32, -322, -37, -371, -32, -362.856, 19.857, -372, 93, -329, 127, -266, 140, -189, 135, -99, 149, -99, 118, -34, 106, 18, 140, 25.8151, 92.3218)
+
+[node name="chunk_cornertime" type="Node2D" parent="."]
+position = Vector2(1536, 320)
+
+[node name="PolyChunk2D" type="Node2D" parent="chunk_cornertime"]
+script = ExtResource("10_7lbqy")
+points = PackedVector2Array(-16, -41, 0, -66, 0, -122, -25, -110, -46, -91, -69, -39, -101, -25, -118, 0, -22, 0)
+
+[node name="PolyChunk2D-2" type="Node2D" parent="chunk_cornertime"]
+position = Vector2(0, -260)
+script = ExtResource("10_7lbqy")
+points = PackedVector2Array(-4, -25, 1, -38, 0, -100, -24, -83, -70, -70, -69, -39)
+
+[node name="PolyChunk2D-3" type="Node2D" parent="chunk_cornertime"]
+position = Vector2(0, -520)
+script = ExtResource("10_7lbqy")
+points = PackedVector2Array(0, 13, 0, -18, -16, -22, -48, -9, -84, 27, -61, 61, -54, 23, -28, 10)
+
+[node name="pin_wheel" parent="." instance=ExtResource("5_g1c02")]
+position = Vector2(636, -184)
+
+[node name="tank" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="border" type="Polygon2D" parent="tank"]
-z_index = 1
 color = Color(0.776471, 1, 1, 0.65098)
 invert_enabled = true
 invert_border = 20.0
@@ -158,237 +276,50 @@ invert_border = 4.0
 polygon = PackedVector2Array(-192, 320, 1536, 320, 1536, -576, -192, -576)
 metadata/_edit_lock_ = true
 
-[node name="open" parent="." instance=ExtResource("3_i1qn0")]
-position = Vector2(426, -327)
-rotation = -0.0872665
-z_index = 9
-gizmo_extents = 24.0
+[node name="static_body_2d" type="StaticBody2D" parent="tank"]
+collision_mask = 7
 
-[node name="pini" type="Area2D" parent="."]
-visible = false
-position = Vector2(1050, 81)
-collision_mask = 2
+[node name="collision_shape_2d" type="CollisionShape2D" parent="tank/static_body_2d"]
+position = Vector2(-256, -128)
+shape = SubResource("RectangleShape2D_qqiih")
+
+[node name="collision_shape_2d2" type="CollisionShape2D" parent="tank/static_body_2d"]
+position = Vector2(1600, -128)
+shape = SubResource("RectangleShape2D_qqiih")
+
+[node name="collision_shape_2d3" type="CollisionShape2D" parent="tank/static_body_2d"]
+position = Vector2(672, -640)
+shape = SubResource("RectangleShape2D_0i40o")
+
+[node name="collision_shape_2d4" type="CollisionShape2D" parent="tank/static_body_2d"]
+position = Vector2(672, 384)
+shape = SubResource("RectangleShape2D_0i40o")
+
+[node name="world_bounds_min" type="Area2D" parent="tank"]
+position = Vector2(-196, -580)
+collision_layer = 0
+collision_mask = 7
 script = ExtResource("5_h8ogp")
-type = 1
+type = 2
 
-[node name="pini_collision_shape" type="CollisionShape2D" parent="pini"]
-position = Vector2(43, 31)
-shape = SubResource("RectangleShape2D_xw81c")
+[node name="top" type="CollisionShape2D" parent="tank/world_bounds_min"]
+shape = SubResource("WorldBoundaryShape2D_6uohf")
 
-[node name="cave" type="Node2D" parent="."]
-position = Vector2(921, 11)
+[node name="left" type="CollisionShape2D" parent="tank/world_bounds_min"]
+shape = SubResource("WorldBoundaryShape2D_jfuxi")
 
-[node name="friend1" type="Node2D" parent="cave"]
-position = Vector2(91, 56)
+[node name="world_bounds_max" type="Area2D" parent="tank"]
+position = Vector2(1540, 324)
+collision_layer = 0
+collision_mask = 7
+script = ExtResource("5_h8ogp")
+type = 2
 
-[node name="friend" type="AnimatedSprite2D" parent="cave/friend1"]
-modulate = Color(0.729412, 0.933333, 0.815686, 1)
-position = Vector2(0, -11)
-frames = ExtResource("10_wbrr2")
-animation = &"call_high"
-flip_h = true
-script = ExtResource("6_8rd6n")
+[node name="bottom" type="CollisionShape2D" parent="tank/world_bounds_max"]
+shape = SubResource("WorldBoundaryShape2D_xewsi")
 
-[node name="friend2" type="Node2D" parent="cave"]
-position = Vector2(205, 13)
-
-[node name="friend2" type="AnimatedSprite2D" parent="cave/friend2"]
-modulate = Color(1, 0.933333, 0.658824, 1)
-position = Vector2(6, -11)
-frames = ExtResource("10_wbrr2")
-animation = &"look_down"
-flip_h = true
-
-[node name="animation_player" type="AnimationPlayer" parent="cave/friend2/friend2"]
-libraries = {
-"": SubResource("AnimationLibrary_cv6dj")
-}
-
-[node name="friend3" type="Node2D" parent="cave"]
-position = Vector2(148, 51)
-
-[node name="friend3" type="AnimatedSprite2D" parent="cave/friend3"]
-position = Vector2(0, 16)
-frames = ExtResource("10_wbrr2")
-animation = &"jumping"
-flip_h = true
-
-[node name="animation_player" type="AnimationPlayer" parent="cave/friend3"]
-autoplay = "bob"
-libraries = {
-"": SubResource("AnimationLibrary_6ibqp")
-}
-
-[node name="leafy_thing" parent="cave" instance=ExtResource("8_hlk6j")]
-position = Vector2(253, -96)
-rotation = 0.261799
-
-[node name="cave2" type="Node2D" parent="cave"]
-texture_repeat = 2
-script = ExtResource("10_7lbqy")
-color = Color(0.719419, 0.526667, 0.45236, 1)
-color_stroke = Color(0.596078, 0.984314, 0.596078, 0.533333)
-texture = ExtResource("10_o4hj1")
-join_cut_depth = 8.0
-points = PackedVector2Array(32, 22, -7, 26, -38, 13, -54, -11, -85, -8, -106, 2, -60, 64, -55.5597, 111.022, 39.8626, 115.222, 107.635, 153.859, 188.526, 183.062, 240.676, 168.981, 271.987, 109.631, 261.184, 66.9671, 267.828, -23.2197, 291.744, -77.6114, 244.017, -118.395, 129.812, -98.513, 58.8798, -91.7541, 7, -66, 3, -27, 38, -17, 123, -28, 190.076, -28.644, 224.059, -24.0183, 233.497, 13.9676, 205.318, 13.5556, 205.307, 23.1846, 212.779, 55.3776, 236.752, 76.5905, 217.331, 97.5547, 215.616, 126.491, 187.238, 143.038, 139.758, 100.79, 121.847, 66.7027, 102.601, 56.4095, 78.984, 56.5575, 69.0855, 45.2785, 52.7686, 44.7107)
-
-[node name="water" type="Polygon2D" parent="cave/cave2"]
-visible = false
-show_behind_parent = true
-material = SubResource("CanvasItemMaterial_bntbq")
-position = Vector2(137, 63)
-color = Color(0, 0.28454, 0.287581, 1)
-polygon = PackedVector2Array(-80, -12, 110, -12, 110, 40, 80.2441, 97.7464, 0.236633, 92.3481, -80, 40)
-
-[node name="water2" type="Polygon2D" parent="cave/cave2"]
-visible = false
-material = SubResource("CanvasItemMaterial_bntbq")
-position = Vector2(137, 63)
-color = Color(0, 0.28454, 0.287581, 1)
-polygon = PackedVector2Array(-62, -12, 110, -12, 110, 40, 80.2441, 97.7464, 0.236633, 92.3481, 45, 75, 8, 44, -1, 32, -12, 11, -23, 1, -28, -2, -42, -6, -58, -6)
-
-[node name="cave_water" type="Node2D" parent="cave"]
-texture_repeat = 2
-material = SubResource("CanvasItemMaterial_40t2s")
-z_index = 10
-z_as_relative = false
-script = ExtResource("10_7lbqy")
-color = Color(0.14902, 0.25098, 0.282353, 1)
-stroke_thickness = 0.0
-join_cut_depth = 8.0
-points = PackedVector2Array(213.5, 52, 218.461, 60.4052, 236.752, 76.5905, 217.331, 97.5547, 215.616, 126.491, 187.238, 143.038, 139.758, 100.79, 121.847, 66.7027, 102.601, 56.4095, 78.984, 56.5575, 75, 52)
-collider_mode = 0
-
-[node name="doorthing" type="Node2D" parent="cave"]
-modulate = Color(1, 1, 1, 0.701961)
-position = Vector2(5, -36)
-
-[node name="BendyLine2D" type="Node2D" parent="cave/doorthing"]
-script = ExtResource("12_ktuvj")
-rest_axis = Vector2(-1, 0)
-tip_node_path = NodePath("../tip")
-nsegments = 12
-flex_bias = 0.523236
-default_color = Color(0.886275, 0.572549, 0, 1)
-
-[node name="tip" type="Node2D" parent="cave/doorthing"]
-position = Vector2(-83, 27)
-
-[node name="TERRAIN" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
-
-[node name="PolyChunk2D7" type="Node2D" parent="TERRAIN"]
-texture_repeat = 2
-position = Vector2(71, 0)
-script = ExtResource("10_7lbqy")
-color = Color(0.858824, 0.65098, 0.580392, 1)
-color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
-texture = ExtResource("10_o4hj1")
-join_cut_depth = 8.0
-points = PackedVector2Array(120, -32, 96.5, -31.25, 64.84, -5.2534, 1.4929, -2.93191, -4, -63.25, -38, -24, -41, 35, 45, 98, 87, 44, 143, 33, 120.815, -9.6782)
-
-[node name="chunk0" type="Node2D" parent="."]
-position = Vector2(376, -296)
-
-[node name="Wibbler4" parent="chunk0" instance=ExtResource("6_11arw")]
-
-[node name="PolyChunk2D-2" type="Node2D" parent="chunk0"]
-texture_repeat = 2
-position = Vector2(179, -86)
-script = ExtResource("10_7lbqy")
-color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
-texture = ExtResource("10_o4hj1")
-join_cut_depth = 20.0
-points = PackedVector2Array(-45, -196, -29, -18, -49, 40, -93, 86, -84, 149, 17, 76, 75, -196)
-
-[node name="PolyChunk2D" type="Node2D" parent="chunk0"]
-texture_repeat = 2
-position = Vector2(-49, 54)
-script = ExtResource("10_7lbqy")
-color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
-texture = ExtResource("10_o4hj1")
-join_cut_depth = 20.0
-points = PackedVector2Array(-45.1777, -121.815, -56.538, -8.8365, 37, 33, 127, 24, 179, -19, 173, -80, 106, -57, 42.1646, -51.6304)
-
-[node name="PolyChunk2D-3" type="Node2D" parent="chunk0"]
-texture_repeat = 2
-position = Vector2(-376, 126)
-script = ExtResource("10_7lbqy")
-color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
-texture = ExtResource("10_o4hj1")
-join_cut_depth = 20.0
-points = PackedVector2Array(44, 10.75, -16.5, 6.25, 30.7363, -40.2823, 170.421, -80.0685, 236, -50.5, 293, -133, 345, -73, 278, -14, 220, -19, 161.08, 22.1684, 154, -21, 127.5, 0, 110, 46)
-
-[node name="chunk6" type="Node2D" parent="."]
-position = Vector2(447, 13)
-
-[node name="leafy_thing" parent="chunk6" instance=ExtResource("8_hlk6j")]
-position = Vector2(-131, 23)
-
-[node name="PolyChunk2D6" type="Node2D" parent="chunk6"]
-texture_repeat = 2
-script = ExtResource("10_7lbqy")
-color = Color(0.858824, 0.65098, 0.580392, 1)
-color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
-texture = ExtResource("10_o4hj1")
-join_cut_depth = 14.0
-points = PackedVector2Array(144.12, 12.3697, 88.25, -12.25, 0, -11, -72, -6, -121.91, 4.4966, -141.75, 15, -162, 40, -175.5, 91.75, -132.75, 114.5, -71.3004, 88.2613, 25.4312, 85.3388, 67.0873, 124.947, 137.282, 117.054, 172.478, 96.5279, 179.336, 59.3602)
-
-[node name="chunk5_mushpit" type="Node2D" parent="."]
-position = Vector2(724, 183)
-
-[node name="bendy_shroom" parent="chunk5_mushpit" instance=ExtResource("7_lfi5s")]
-
-[node name="PolyChunk2D5" type="Node2D" parent="chunk5_mushpit"]
-texture_repeat = 2
-position = Vector2(152, -34)
-script = ExtResource("10_7lbqy")
-color = Color(0.858824, 0.65098, 0.580392, 1)
-color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
-texture = ExtResource("10_o4hj1")
-join_cut_depth = 8.0
-points = PackedVector2Array(81.0834, 46.5833, 74, -35, -9, -47, -21, -7, -62, 12.25, -134.25, 29, -196.729, 22.9364, -259.499, 32.2897, -291, 20, -290, -32, -322, -37, -371, -32, -362.856, 19.857, -372, 93, -329, 127, -266, 140, -189, 135, -99, 149, -99, 118, -34, 106, 18, 140, 25.8151, 92.3218)
-
-[node name="chunk8" type="Node2D" parent="."]
-
-[node name="Wibbler" parent="chunk8" instance=ExtResource("6_11arw")]
-position = Vector2(-29, 35)
-
-[node name="Wibbler2" parent="chunk8" instance=ExtResource("6_11arw")]
-position = Vector2(-96, 24)
-
-[node name="Wibbler3" parent="chunk8" instance=ExtResource("6_11arw")]
-position = Vector2(-144, 32)
-
-[node name="PolyChunk2D8" type="Node2D" parent="chunk8"]
-texture_repeat = 2
-position = Vector2(-32, 32)
-script = ExtResource("10_7lbqy")
-color = Color(0.495331, 0.304907, 0.204743, 1)
-color_stroke = Color(0.389537, 0.493565, 0.32515, 0.772549)
-texture = ExtResource("10_o4hj1")
-join_cut_depth = 8.0
-points = PackedVector2Array(-16.3984, -8.28915, -90, -6, -149, -19, -160, -16, -160, 288, 416, 289, 403, 191, 383, 97, 359, 68, 319, 63, 283, 55, 228, 64, 197, 86, 157, 69, 141, 40, 113, 4, 58, -3, 1.74422, 3.55693)
-
-[node name="chunk99_cornertime" type="Node2D" parent="."]
-position = Vector2(1536, 320)
-
-[node name="PolyChunk2D" type="Node2D" parent="chunk99_cornertime"]
-script = ExtResource("10_7lbqy")
-points = PackedVector2Array(-16, -41, 0, -66, 0, -122, -25, -110, -46, -91, -69, -39, -101, -25, -118, 0, -22, 0)
-
-[node name="PolyChunk2D-2" type="Node2D" parent="chunk99_cornertime"]
-position = Vector2(0, -260)
-script = ExtResource("10_7lbqy")
-points = PackedVector2Array(-4, -25, 1, -38, 0, -100, -24, -83, -70, -70, -69, -39)
-
-[node name="PolyChunk2D-3" type="Node2D" parent="chunk99_cornertime"]
-position = Vector2(0, -520)
-script = ExtResource("10_7lbqy")
-points = PackedVector2Array(0, 13, 0, -18, -16, -22, -48, -9, -84, 27, -61, 61, -54, 23, -28, 10)
-
-[node name="pin_wheel" parent="." instance=ExtResource("5_g1c02")]
-position = Vector2(636, -184)
+[node name="right" type="CollisionShape2D" parent="tank/world_bounds_max"]
+shape = SubResource("WorldBoundaryShape2D_l32ex")
 
 [node name="enemies" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -430,31 +361,4 @@ position = Vector2(326, -224)
 [node name="droplet7" parent="droplets" instance=ExtResource("11_2f02n")]
 position = Vector2(576, -200)
 
-[node name="world_bounds_min" type="Area2D" parent="."]
-position = Vector2(-208, -592)
-collision_layer = 0
-collision_mask = 7
-script = ExtResource("5_h8ogp")
-type = 2
-
-[node name="top" type="CollisionShape2D" parent="world_bounds_min"]
-shape = SubResource("WorldBoundaryShape2D_6uohf")
-
-[node name="left" type="CollisionShape2D" parent="world_bounds_min"]
-shape = SubResource("WorldBoundaryShape2D_jfuxi")
-
-[node name="world_bounds_max" type="Area2D" parent="."]
-position = Vector2(1552, 336)
-collision_layer = 0
-collision_mask = 7
-script = ExtResource("5_h8ogp")
-type = 2
-
-[node name="bottom" type="CollisionShape2D" parent="world_bounds_max"]
-shape = SubResource("WorldBoundaryShape2D_xewsi")
-
-[node name="right" type="CollisionShape2D" parent="world_bounds_max"]
-shape = SubResource("WorldBoundaryShape2D_l32ex")
-
-[connection signal="entity_entered" from="pini" to="." method="_on_pini_entity_entered"]
-[connection signal="animation_finished" from="cave/friend1/friend" to="cave/friend1/friend" method="_on_animation_finished"]
+[connection signal="entity_entered" from="chunk_cave/pini" to="." method="_on_pini_entity_entered"]

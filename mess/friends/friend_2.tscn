@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwq3yvsgocgfd"]
+
+[ext_resource type="SpriteFrames" uid="uid://lxe8lenckv0i" path="res://entity/frog2/frames/frog.spriteframes.tres" id="1_egrbi"]
+[ext_resource type="Animation" uid="uid://c7ba74brl0dul" path="res://mess/friends/nervous-jumper.anim" id="2_bqt3h"]
+
+[sub_resource type="Animation" id="Animation_vieo0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rv2hg"]
+resource_name = "default"
+length = 7.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.5, 5.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [&"look_down", &"jumping", &"call_low", &"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.6, 2.7, 2.8, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(211, 3), Vector2(212, 3), Vector2(213, 3), Vector2(214, 3), Vector2(215, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cv6dj"]
+_data = {
+"RESET": SubResource("Animation_vieo0"),
+"default (2)": SubResource("Animation_rv2hg"),
+"nervous-jumper": ExtResource("2_bqt3h")
+}
+
+[node name="friend2" type="Node2D"]
+
+[node name="friend2" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0.933333, 0.658824, 1)
+frames = ExtResource("1_egrbi")
+animation = &"look_down"
+offset = Vector2(0, -11)
+flip_h = true
+
+[node name="animation_player" type="AnimationPlayer" parent="friend2"]
+autoplay = "nervous-jumper"
+libraries = {
+"": SubResource("AnimationLibrary_cv6dj")
+}
