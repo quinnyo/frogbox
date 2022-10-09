@@ -370,6 +370,42 @@ texture = ExtResource("10_o4hj1")
 join_cut_depth = 8.0
 points = PackedVector2Array(-16.3984, -8.28915, -90, -6, -149, -19, -160, -16, -160, 288, 416, 289, 403, 191, 383, 97, 359, 68, 319, 63, 283, 55, 228, 64, 197, 86, 157, 69, 141, 40, 113, 4, 58, -3, 1.74422, 3.55693)
 
+[node name="chunk99_cornertime" type="Node2D" parent="."]
+position = Vector2(1536, 320)
+
+[node name="PolyChunk2D" type="Node2D" parent="chunk99_cornertime"]
+script = ExtResource("10_7lbqy")
+points = PackedVector2Array(-16, -41, 0, -66, 0, -122, -25, -110, -46, -91, -69, -39, -101, -25, -118, 0, -22, 0)
+
+[node name="PolyChunk2D-2" type="Node2D" parent="chunk99_cornertime"]
+position = Vector2(0, -260)
+script = ExtResource("10_7lbqy")
+points = PackedVector2Array(-4, -25, 1, -38, 0, -100, -24, -83, -70, -70, -69, -39)
+
+[node name="PolyChunk2D-3" type="Node2D" parent="chunk99_cornertime"]
+position = Vector2(0, -520)
+script = ExtResource("10_7lbqy")
+points = PackedVector2Array(0, 13, 0, -18, -16, -22, -48, -9, -84, 27, -61, 61, -54, 23, -28, 10)
+
+[node name="pin_wheel" parent="." instance=ExtResource("5_g1c02")]
+position = Vector2(636, -184)
+
+[node name="enemies" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="toad" parent="enemies" instance=ExtResource("12_ll40j")]
+position = Vector2(254, -94)
+
+[node name="toad2" parent="enemies" instance=ExtResource("12_ll40j")]
+position = Vector2(513, -18)
+
+[node name="toad4" parent="enemies" instance=ExtResource("12_ll40j")]
+position = Vector2(650, 142)
+
+[node name="toad3" parent="enemies" instance=ExtResource("12_ll40j")]
+position = Vector2(49, -243)
+face_left = false
+
 [node name="droplets" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
@@ -393,22 +429,6 @@ position = Vector2(326, -224)
 
 [node name="droplet7" parent="droplets" instance=ExtResource("11_2f02n")]
 position = Vector2(576, -200)
-
-[node name="pin_wheel" parent="." instance=ExtResource("5_g1c02")]
-position = Vector2(636, -184)
-
-[node name="toad" parent="." instance=ExtResource("12_ll40j")]
-position = Vector2(254, -94)
-
-[node name="toad2" parent="." instance=ExtResource("12_ll40j")]
-position = Vector2(513, -18)
-
-[node name="toad4" parent="." instance=ExtResource("12_ll40j")]
-position = Vector2(650, 142)
-
-[node name="toad3" parent="." instance=ExtResource("12_ll40j")]
-position = Vector2(49, -243)
-face_left = false
 
 [node name="world_bounds_min" type="Area2D" parent="."]
 position = Vector2(-208, -592)
@@ -435,23 +455,6 @@ shape = SubResource("WorldBoundaryShape2D_xewsi")
 
 [node name="right" type="CollisionShape2D" parent="world_bounds_max"]
 shape = SubResource("WorldBoundaryShape2D_l32ex")
-
-[node name="chunk99_cornertime" type="Node2D" parent="."]
-position = Vector2(1536, 320)
-
-[node name="PolyChunk2D" type="Node2D" parent="chunk99_cornertime"]
-script = ExtResource("10_7lbqy")
-points = PackedVector2Array(-16, -41, 0, -66, 0, -122, -25, -110, -46, -91, -69, -39, -101, -25, -118, 0, -22, 0)
-
-[node name="PolyChunk2D-2" type="Node2D" parent="chunk99_cornertime"]
-position = Vector2(0, -260)
-script = ExtResource("10_7lbqy")
-points = PackedVector2Array(-4, -25, 1, -38, 0, -100, -24, -83, -70, -70, -69, -39)
-
-[node name="PolyChunk2D-3" type="Node2D" parent="chunk99_cornertime"]
-position = Vector2(0, -520)
-script = ExtResource("10_7lbqy")
-points = PackedVector2Array(0, 13, 0, -18, -16, -22, -48, -9, -84, 27, -61, 61, -54, 23, -28, 10)
 
 [connection signal="entity_entered" from="pini" to="." method="_on_pini_entity_entered"]
 [connection signal="animation_finished" from="cave/friend1/friend" to="cave/friend1/friend" method="_on_animation_finished"]
