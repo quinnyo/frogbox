@@ -12,10 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://bwq3yvsgocgfd" path="res://mess/friends/friend_2.tscn" id="9_44she"]
 [ext_resource type="Script" path="res://addons/qnvr_poly_chunk/src/poly_chunk_2d.gd" id="10_7lbqy"]
 [ext_resource type="PackedScene" uid="uid://byf8grauxwk0f" path="res://mess/friends/friend_3.tscn" id="10_o2u2q"]
-[ext_resource type="Texture2D" uid="uid://dpgwgs5028fdc" path="res://mess/props/ground_noise.png" id="10_o4hj1"]
 [ext_resource type="PackedScene" uid="uid://85giyiq00d4q" path="res://mess/droplet.tscn" id="11_2f02n"]
 [ext_resource type="Script" path="res://mess/bendy_line_2d.gd" id="12_ktuvj"]
 [ext_resource type="PackedScene" uid="uid://ce5cpo2jl51dh" path="res://entity/toad/toad.tscn" id="12_ll40j"]
+[ext_resource type="Texture2D" uid="uid://d3iqg1q3olrvl" path="res://mess/props/ground_noise_b.png" id="13_w7g53"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw81c"]
 size = Vector2(130, 80)
@@ -70,7 +70,7 @@ texture_repeat = 2
 position = Vector2(179, -86)
 script = ExtResource("10_7lbqy")
 color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
-texture = ExtResource("10_o4hj1")
+texture = ExtResource("13_w7g53")
 join_cut_depth = 20.0
 points = PackedVector2Array(-45, -196, -29, -18, -49, 40, -93, 86, -84, 149, 17, 76, 75, -196)
 
@@ -79,7 +79,7 @@ texture_repeat = 2
 position = Vector2(-49, 54)
 script = ExtResource("10_7lbqy")
 color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
-texture = ExtResource("10_o4hj1")
+texture = ExtResource("13_w7g53")
 join_cut_depth = 20.0
 points = PackedVector2Array(-45.1777, -121.815, -56.538, -8.8365, 37, 33, 127, 24, 179, -19, 173, -80, 106, -57, 42.1646, -51.6304)
 
@@ -88,7 +88,7 @@ texture_repeat = 2
 position = Vector2(-376, 126)
 script = ExtResource("10_7lbqy")
 color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
-texture = ExtResource("10_o4hj1")
+texture = ExtResource("13_w7g53")
 join_cut_depth = 20.0
 points = PackedVector2Array(44, 10.75, -16.5, 6.25, 30.7363, -40.2823, 170.421, -80.0685, 236, -50.5, 293, -133, 345, -73, 278, -14, 220, -19, 161.08, 22.1684, 154, -21, 127.5, 0, 110, 46)
 
@@ -112,9 +112,9 @@ rotation = 0.261799
 [node name="cave2" type="Node2D" parent="chunk_cave"]
 texture_repeat = 2
 script = ExtResource("10_7lbqy")
-color = Color(0.719419, 0.526667, 0.45236, 1)
+color = Color(0.639216, 0.454902, 0.380392, 1)
 color_stroke = Color(0.596078, 0.984314, 0.596078, 0.533333)
-texture = ExtResource("10_o4hj1")
+texture = ExtResource("13_w7g53")
 join_cut_depth = 8.0
 points = PackedVector2Array(32, 22, -7, 26, -38, 13, -54, -11, -85, -8, -106, 2, -60, 64, -55.5597, 111.022, 39.8626, 115.222, 107.635, 153.859, 188.526, 183.062, 240.676, 168.981, 271.987, 109.631, 261.184, 66.9671, 267.828, -23.2197, 291.744, -77.6114, 244.017, -118.395, 129.812, -98.513, 58.8798, -91.7541, 7, -66, 3, -27, 38, -17, 130, -25, 194, -40, 225, -26, 238, 13, 205, 13, 205, 23, 212.779, 55.3776, 236.752, 76.5905, 217.331, 97.5547, 215.616, 126.491, 187.238, 143.038, 139.758, 100.79, 121.847, 66.7027, 106, 56, 77, 56, 72.9985, 50.5794, 52.7686, 44.7107)
 
@@ -155,6 +155,7 @@ points = PackedVector2Array(213.5, 52, 218.461, 60.4052, 236.752, 76.5905, 217.3
 collider_mode = 0
 
 [node name="doorthing" type="Node2D" parent="chunk_cave"]
+visible = false
 modulate = Color(1, 1, 1, 0.701961)
 position = Vector2(5, -36)
 
@@ -186,7 +187,7 @@ position = Vector2(71, 0)
 script = ExtResource("10_7lbqy")
 color = Color(0.858824, 0.65098, 0.580392, 1)
 color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
-texture = ExtResource("10_o4hj1")
+texture = ExtResource("13_w7g53")
 join_cut_depth = 8.0
 points = PackedVector2Array(120, -32, 96.5, -31.25, 64.84, -5.2534, 1.4929, -2.93191, -4, -63.25, -38, -24, -41, 35, 45, 98, 87, 44, 143, 33, 120.815, -9.6782)
 
@@ -196,7 +197,7 @@ position = Vector2(-32, 32)
 script = ExtResource("10_7lbqy")
 color = Color(0.495331, 0.304907, 0.204743, 1)
 color_stroke = Color(0.389537, 0.493565, 0.32515, 0.772549)
-texture = ExtResource("10_o4hj1")
+texture = ExtResource("13_w7g53")
 join_cut_depth = 8.0
 points = PackedVector2Array(-16.3984, -8.28915, -90, -6, -149, -19, -160, -16, -160, 288, 416, 289, 403, 191, 383, 97, 359, 68, 319, 63, 283, 55, 228, 64, 197, 86, 157, 69, 141, 40, 113, 4, 58, -3, 1.74422, 3.55693)
 
@@ -211,7 +212,7 @@ texture_repeat = 2
 script = ExtResource("10_7lbqy")
 color = Color(0.858824, 0.65098, 0.580392, 1)
 color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
-texture = ExtResource("10_o4hj1")
+texture = ExtResource("13_w7g53")
 join_cut_depth = 14.0
 points = PackedVector2Array(144.12, 12.3697, 88.25, -12.25, 0, -11, -72, -6, -121.91, 4.4966, -141.75, 15, -162, 40, -175.5, 91.75, -132.75, 114.5, -71.3004, 88.2613, 25.4312, 85.3388, 67.0873, 124.947, 137.282, 117.054, 172.478, 96.5279, 179.336, 59.3602)
 
@@ -226,7 +227,7 @@ position = Vector2(152, -34)
 script = ExtResource("10_7lbqy")
 color = Color(0.858824, 0.65098, 0.580392, 1)
 color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
-texture = ExtResource("10_o4hj1")
+texture = ExtResource("13_w7g53")
 join_cut_depth = 8.0
 points = PackedVector2Array(81.0834, 46.5833, 74, -35, -9, -47, -21, -7, -62, 12.25, -134.25, 29, -196.729, 22.9364, -259.499, 32.2897, -291, 20, -290, -32, -322, -37, -371, -32, -362.856, 19.857, -372, 93, -329, 127, -266, 140, -189, 135, -99, 149, -99, 118, -34, 106, 18, 140, 25.8151, 92.3218)
 
