@@ -12,10 +12,10 @@ extends Node2D
 		_update_scroll()
 		smoothed_camera_pos = old_smoothed_camera_pos
 
-@export var limit_left: int = -10000000
-@export var limit_top: int = -10000000
-@export var limit_right: int = 10000000
-@export var limit_bottom: int = 10000000
+@export var limit_left: int = -100_000_000
+@export var limit_top: int = -100_000_000
+@export var limit_right: int = 100_000_000
+@export var limit_bottom: int = 100_000_000
 @export var limit_smoothing_enabled: bool = false
 
 @export var smoothing_enabled: bool = false
@@ -50,10 +50,16 @@ var _first: bool = false
 var _drag_horizontal_offset_changed: bool = false
 var _drag_vertical_offset_changed: bool = false
 
+var _request_process_hints: bool = true
+
 
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
+
+	if _request_process_hints:
+		_process_camera_hints()
+		_request_process_hints = false
 
 	if !has_target():
 		_find_target()
@@ -75,6 +81,8 @@ func _notification(what: int) -> void:
 func _enter_tree() -> void:
 	if Engine.is_editor_hint():
 		return
+
+	_request_process_hints = true
 
 	_canvas_layer = _find_canvas_layer()
 	_first = true
@@ -196,11 +204,11 @@ func _get_camera_transform() -> Transform2D:
 			if screen_rect.position.x < limit_left:
 				camera_pos.x -= screen_rect.position.x - limit_left
 			if screen_rect.end.x > limit_right:
-				camera_pos.x -= screen_rect.position.x + limit_right - screen_rect.size.x
+				camera_pos.x -= screen_rect.end.x - limit_right
 			if screen_rect.position.y < limit_top:
 				camera_pos.y -= screen_rect.position.y - limit_top
 			if screen_rect.end.y > limit_bottom:
-				camera_pos.y -= screen_rect.position.y + limit_bottom - screen_rect.size.y
+				camera_pos.y -= screen_rect.end.y - limit_bottom
 
 		if smoothing_enabled && !Engine.is_editor_hint():
 			var c := smoothing_speed * _get_camera_process_delta_time()
@@ -262,3 +270,28 @@ func _find_canvas_layer() -> CanvasLayer:
 		else:
 			node = node.get_parent()
 	return null
+
+
+func _process_camera_hints() -> void:
+	# find camera hint nodes ~~ set limits
+	for node in get_tree().get_nodes_in_group(CameraHint2D.GROUP):
+		var hint := node as CameraHint2D
+		if !is_instance_valid(hint):
+			continue
+
+		if !hint.changed.is_connected(_on_camera_hint_changed):
+			hint.changed.connect(_on_camera_hint_changed)
+
+		var p := Vector2i(hint.global_position.round())
+		if hint.as_limit_left:
+			limit_left = maxi(limit_left, p.x)
+		if hint.as_limit_right:
+			limit_right = mini(limit_right, p.x)
+		if hint.as_limit_top:
+			limit_top = maxi(limit_top, p.y)
+		if hint.as_limit_bottom:
+			limit_bottom = mini(limit_bottom, p.y)
+
+
+func _on_camera_hint_changed() -> void:
+	_request_process_hints = true

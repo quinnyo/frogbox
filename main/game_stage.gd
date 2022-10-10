@@ -28,3 +28,14 @@ func add_default_camera() -> void:
 	var camera_scn := preload("res://mess/autocam/autocam_2d.tscn")
 	var camera := camera_scn.instantiate()
 	add_to_stage(camera)
+
+
+static func find_stage_parent(node: Node) -> GameStage:
+	if node is GameStage:
+		return node as GameStage
+	var parent := node.get_parent()
+	while is_instance_valid(parent):
+		if parent is GameStage:
+			return parent as GameStage
+		parent = parent.get_parent()
+	return null

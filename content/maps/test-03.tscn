@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ca8ap15tppo3n"]
+[gd_scene load_steps=27 format=3 uid="uid://it8rs14p054g"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_qlqnw"]
 [ext_resource type="Texture2D" path="res://backdrop.dds" id="3_e4x02"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://mess/bendy_line_2d.gd" id="12_ktuvj"]
 [ext_resource type="PackedScene" uid="uid://ce5cpo2jl51dh" path="res://entity/toad/toad.tscn" id="12_ll40j"]
 [ext_resource type="Texture2D" uid="uid://d3iqg1q3olrvl" path="res://mess/props/ground_noise_b.png" id="13_w7g53"]
+[ext_resource type="Script" path="res://mess/autocam/camera_hint_2d.gd" id="15_c7lqf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw81c"]
 size = Vector2(130, 80)
@@ -296,32 +297,6 @@ shape = SubResource("RectangleShape2D_0i40o")
 position = Vector2(672, 384)
 shape = SubResource("RectangleShape2D_0i40o")
 
-[node name="world_bounds_min" type="Area2D" parent="tank"]
-position = Vector2(-196, -580)
-collision_layer = 0
-collision_mask = 7
-script = ExtResource("5_h8ogp")
-type = 2
-
-[node name="top" type="CollisionShape2D" parent="tank/world_bounds_min"]
-shape = SubResource("WorldBoundaryShape2D_6uohf")
-
-[node name="left" type="CollisionShape2D" parent="tank/world_bounds_min"]
-shape = SubResource("WorldBoundaryShape2D_jfuxi")
-
-[node name="world_bounds_max" type="Area2D" parent="tank"]
-position = Vector2(1540, 324)
-collision_layer = 0
-collision_mask = 7
-script = ExtResource("5_h8ogp")
-type = 2
-
-[node name="bottom" type="CollisionShape2D" parent="tank/world_bounds_max"]
-shape = SubResource("WorldBoundaryShape2D_xewsi")
-
-[node name="right" type="CollisionShape2D" parent="tank/world_bounds_max"]
-shape = SubResource("WorldBoundaryShape2D_l32ex")
-
 [node name="enemies" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
@@ -361,5 +336,45 @@ position = Vector2(326, -224)
 
 [node name="droplet7" parent="droplets" instance=ExtResource("11_2f02n")]
 position = Vector2(576, -200)
+
+[node name="bounds" type="Node2D" parent="."]
+
+[node name="world_bounds_min" type="Area2D" parent="bounds"]
+position = Vector2(-396, -780)
+collision_layer = 0
+collision_mask = 7
+script = ExtResource("5_h8ogp")
+type = 2
+
+[node name="top" type="CollisionShape2D" parent="bounds/world_bounds_min"]
+shape = SubResource("WorldBoundaryShape2D_6uohf")
+
+[node name="left" type="CollisionShape2D" parent="bounds/world_bounds_min"]
+shape = SubResource("WorldBoundaryShape2D_jfuxi")
+
+[node name="world_bounds_max" type="Area2D" parent="bounds"]
+position = Vector2(1740, 524)
+collision_layer = 0
+collision_mask = 7
+script = ExtResource("5_h8ogp")
+type = 2
+
+[node name="bottom" type="CollisionShape2D" parent="bounds/world_bounds_max"]
+shape = SubResource("WorldBoundaryShape2D_xewsi")
+
+[node name="right" type="CollisionShape2D" parent="bounds/world_bounds_max"]
+shape = SubResource("WorldBoundaryShape2D_l32ex")
+
+[node name="view_limit_min" type="Node2D" parent="bounds"]
+position = Vector2(-213, -597)
+script = ExtResource("15_c7lqf")
+as_limit_left = true
+as_limit_top = true
+
+[node name="view_limit_max" type="Node2D" parent="bounds"]
+position = Vector2(1557, 341)
+script = ExtResource("15_c7lqf")
+as_limit_right = true
+as_limit_bottom = true
 
 [connection signal="entity_entered" from="chunk_cave/pini" to="." method="_on_pini_entity_entered"]

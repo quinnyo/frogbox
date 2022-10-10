@@ -24,6 +24,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://mess/bendygon_2d.gd"
 }, {
+"base": "Node2D",
+"class": &"CameraHint2D",
+"language": &"GDScript",
+"path": "res://mess/autocam/camera_hint_2d.gd"
+}, {
 "base": "Node",
 "class": &"Enti2",
 "language": &"GDScript",
@@ -133,6 +138,7 @@ _global_script_class_icons={
 "Attack": "",
 "BendyLine2D": "",
 "Bendygon2D": "",
+"CameraHint2D": "",
 "Enti2": "",
 "FrogRules": "",
 "GameStage": "",
