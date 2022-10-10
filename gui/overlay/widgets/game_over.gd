@@ -18,6 +18,7 @@ func _notification(what: int) -> void:
 		NOTIFICATION_EXIT_TREE: pass
 		NOTIFICATION_VISIBILITY_CHANGED:
 			if visible:
+				get_choice_button(Choice.APP_QUIT).visible = !OS.has_feature("web")
 				var focus_button := get_node("%choice_next") as BaseButton
 				if focus_button.disabled:
 					focus_button = get_node("%choice_retry") as BaseButton
@@ -42,14 +43,18 @@ func set_message(p_message: String) -> void:
 	title_message.text = p_message
 
 
-func set_choice_enabled(choice: Choice, enabled: bool) -> void:
-	var button: BaseButton = null
+func get_choice_button(choice: Choice) -> BaseButton:
 	match choice:
-		Choice.NEXT: button = get_node("%choice_next")
-		Choice.RETRY: button = get_node("%choice_retry")
-		Choice.MENU: button = get_node("%choice_menu")
-		Choice.APP_QUIT: button = get_node("%choice_app_quit")
-		_: push_error("unknown choice: %s (Choice.%s)" % [ choice, Choice.keys()[choice] ])
+		Choice.NEXT: return get_node("%choice_next")
+		Choice.RETRY: return get_node("%choice_retry")
+		Choice.MENU: return get_node("%choice_menu")
+		Choice.APP_QUIT: return get_node("%choice_app_quit")
+	push_error("unknown choice: %s (Choice.%s)" % [ choice, Choice.keys()[choice] ])
+	return null
+
+
+func set_choice_enabled(choice: Choice, enabled: bool) -> void:
+	var button := get_choice_button(choice)
 	if button:
 		button.disabled = !enabled
 
@@ -75,4 +80,3 @@ func _on_choice_app_quit_pressed() -> void:
 		get_tree().quit()
 	else:
 		choice_app_quit.emit()
-
