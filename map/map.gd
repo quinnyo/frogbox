@@ -17,6 +17,7 @@ func _ready() -> void:
 func is_map_ready() -> bool:
 	return _map_ready
 
+
 ##
 func get_spawn_point(sequence: int = 0, player_slot: int = 0) -> SpawnPoint:
 	var player_allowed: Array[SpawnPoint] = _spawn_points.filter(func(spawn: SpawnPoint): return spawn.is_player_allowed(player_slot))

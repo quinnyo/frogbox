@@ -81,14 +81,14 @@ func _start_game() -> void:
 	hero.global_transform = spawn_point.get_spawn_transform() if spawn_point else map.global_transform
 
 	# load & spawn default camera
-	var camera_scn := preload("res://mess/autocam/autocam_2d.tscn")
-	var camera := camera_scn.instantiate()
-	stage.add_to_stage(camera)
+	stage.add_default_camera()
 
+	# disable input until game starts proper
 	stage.set_avatar_control_enabled(false)
 	_game_starting = false
 	scenario_ready.emit()
 
+	# wait for curtain transition & start game
 	await get_tree().create_timer(max_curtain_open_secs).timeout
 	scenario_state = ScenarioState.RUNNING
 	scenario_action.emit()

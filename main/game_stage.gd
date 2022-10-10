@@ -24,17 +24,7 @@ func set_avatar_control_enabled(enabled: bool) -> void:
 		propagate_call("set_process_input", [ enabled ])
 
 
-func open() -> void:
-	pass
-
-
-func close() -> void:
-	pass
-
-
-func start() -> void:
-	pass
-
-
-func stop() -> void:
-	pass
+func add_default_camera() -> void:
+	var camera_scn := preload("res://mess/autocam/autocam_2d.tscn")
+	var camera := camera_scn.instantiate()
+	add_to_stage(camera)
