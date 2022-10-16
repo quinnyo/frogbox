@@ -50,4 +50,4 @@ func get_outcome_text() -> String:
 	match _outcome:
 		Outcome.PASSED: return "Passed!"
 		Outcome.FAILED: return "Failed!"
-		_: return "N/A"
+	return "End"

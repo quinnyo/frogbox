@@ -19,6 +19,7 @@ enum { ZONE_NORMAL, ZONE_WATER, ZONE_WORLD_BOUND }
 @export var zone_group_name := ""
 
 
+@warning_ignore(return_value_discarded)
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)

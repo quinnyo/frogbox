@@ -19,16 +19,17 @@ class Jumptility:
 		return (0.5 * v * v) / g
 
 
-## returns the update linear velocity vector
-static func integrate_step(p_step: float, p_linear_velocity: Vector2, p_total_linear_damp: float, p_accel: Vector2 = Vector2.ZERO) -> Vector2:
-#	var force := gravity * mass + applied_force + constant_force
+class Integrator:
+	## returns the updated linear velocity vector
+	static func integrate_step(p_step: float, p_linear_velocity: Vector2, p_total_linear_damp: float, p_accel: Vector2 = Vector2.ZERO) -> Vector2:
+	#	var force := gravity * mass + applied_force + constant_force
 
-	var linear_damp := 1.0 - p_step * p_total_linear_damp
+		var linear_damp := 1.0 - p_step * p_total_linear_damp
 
-	if linear_damp <= 0.0: # reached zero in the given time
-		linear_damp = 0.0
+		if linear_damp <= 0.0: # reached zero in the given time
+			linear_damp = 0.0
 
-	return p_linear_velocity * linear_damp + p_accel * p_step
+		return p_linear_velocity * linear_damp + p_accel * p_step
 
 
 class JumpTrajectory:
@@ -54,7 +55,7 @@ func predict_jump(p_initial_velocity: Vector2, p_total_linear_damp: float, p_acc
 	jt.initial_pose = global_transform
 	jt.pose = global_transform
 	while jt.collided == false && jt.time < time_limit:
-		jt.linear_velocity = integrate_step(p_step, jt.linear_velocity, p_total_linear_damp, p_accel)
+		jt.linear_velocity = Integrator.integrate_step(p_step, jt.linear_velocity, p_total_linear_damp, p_accel)
 		var motion := jt.linear_velocity * p_step
 		var collision := KinematicCollision2D.new()
 		if test_move(jt.pose, motion, collision):
@@ -160,7 +161,7 @@ func _physics_process(delta: float) -> void:
 
 #	var was_falling := !is_on_floor() && velocity.y >= 0.0
 
-	move_and_slide()
+	var _collided := move_and_slide()
 
 #	if was_falling && is_on_floor():
 #		pass
