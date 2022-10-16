@@ -59,7 +59,7 @@ vec2 rotated(const vec2 _v, const float _angle) {
 }
 
 void vertex() {
-	const vec2 tip_rest = rest_axis * rest_length;
+	vec2 tip_rest = rest_axis * rest_length;
 	float full_stretch = length(tip_position) / rest_length;
 	float full_angle = angle_to(tip_rest, tip_position);
 
