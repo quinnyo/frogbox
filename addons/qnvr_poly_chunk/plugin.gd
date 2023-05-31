@@ -252,7 +252,7 @@ func _forward_canvas_draw_over_viewport(overlay: Control):
 			overlay.draw_line(point + b0, point - b0, Color.RED, 2.0)
 
 
-func _handles(object: Variant) -> bool:
+func _handles(object: Object) -> bool:
 	return object is PolyChunk2D
 
 
@@ -263,7 +263,7 @@ func _make_visible(p_visible: bool) -> void:
 	update_overlays()
 
 
-func _edit(object: Variant) -> void:
+func _edit(object: Object) -> void:
 	if object is PolyChunk2D:
 		_init_edit_context(object)
 

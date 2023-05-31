@@ -1,6 +1,6 @@
 @tool
-class_name PolyChunk2D extends Node2D
 @icon("../icon/poly_chunk_2d.svg")
+class_name PolyChunk2D extends Node2D
 
 ## Emitted after (re)building
 signal updated()

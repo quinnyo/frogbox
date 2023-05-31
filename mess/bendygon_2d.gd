@@ -14,7 +14,7 @@ const SHADER := preload("bendygon_2d.gdshader")
 		rest_length = value
 		queue_update()
 
-@export_node_path(Node2D) var tip_node_path := NodePath():
+@export var tip_node_path := NodePath():
 	set(value):
 		tip_node_path = value
 		queue_update()

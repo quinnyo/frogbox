@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://c5ax3m7i7k5gb"]
 
-[ext_resource type="Script" path="res://main/newmain.gd" id="1_1t11b"]
-[ext_resource type="Script" path="res://main/game_stage.gd" id="2_kjo5w"]
-[ext_resource type="PackedScene" uid="uid://diyh3q0lp0tb2" path="res://mess/about_text.tscn" id="3_37o3a"]
-[ext_resource type="Script" path="res://gui/overlay/notifications.gd" id="5_p4nm2"]
-[ext_resource type="PackedScene" uid="uid://dtoyeowkrkaux" path="res://gui/overlay/widgets/game_over.tscn" id="6_56uf3"]
+[ext_resource type="Script" path="res://main/newmain.gd" id="1_mh2e2"]
+[ext_resource type="Script" path="res://main/game_stage.gd" id="2_o7hwn"]
+[ext_resource type="PackedScene" uid="uid://diyh3q0lp0tb2" path="res://mess/about_text.tscn" id="3_7vgwi"]
+[ext_resource type="PackedScene" uid="uid://dtoyeowkrkaux" path="res://gui/overlay/widgets/game_over.tscn" id="4_5bu6v"]
+[ext_resource type="Script" path="res://gui/overlay/notifications.gd" id="5_cdswm"]
 
 [sub_resource type="Animation" id="Animation_m00sv"]
 length = 0.001
@@ -62,15 +62,15 @@ _data = {
 
 [node name="main" type="Node"]
 process_mode = 3
-script = ExtResource("1_1t11b")
+script = ExtResource("1_mh2e2")
 
 [node name="stage" type="CanvasLayer" parent="."]
 layer = 0
-script = ExtResource("2_kjo5w")
+script = ExtResource("2_o7hwn")
 
 [node name="hud" type="CanvasLayer" parent="."]
 
-[node name="about_text" parent="hud" instance=ExtResource("3_37o3a")]
+[node name="about_text" parent="hud" instance=ExtResource("3_7vgwi")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -90,7 +90,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="rect" type="ColorRect" parent="hud/curtain"]
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -115,7 +115,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
-[node name="game_over" parent="overlay" instance=ExtResource("6_56uf3")]
+[node name="game_over" parent="overlay" instance=ExtResource("4_5bu6v")]
 visible = false
 
 [node name="notifications" type="VBoxContainer" parent="overlay"]
@@ -128,7 +128,7 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 8
 mouse_filter = 2
-script = ExtResource("5_p4nm2")
+script = ExtResource("5_cdswm")
 
 [node name="debug_overlay" type="CanvasLayer" parent="."]
 layer = 100

@@ -64,9 +64,7 @@ func _integrat(state: PhysicsDirectBodyState2D) -> void:
 		state.integrate_forces()
 
 	if lock_rotation:
-		var tf := state.transform
-		tf.set_rotation(Vector2.UP.angle_to(up))
-		state.transform = tf
+		state.transform = Transform2D(Vector2.UP.angle_to(up), state.transform.origin)
 
 	body_snapshot = PhysicsBodySnapshot2D.from_body_direct_state(state)
 
@@ -96,7 +94,7 @@ func _update_tracked_contacts(state: PhysicsDirectBodyState2D) -> void:
 
 
 func predict_jump_trajectory(p_initial_velocity: Vector2, p_time_limit: float = 1.0) -> PackedVector2Array:
-	return predict_trajectory(Vector2.ZERO, p_initial_velocity, body_snapshot.total_linear_damp, body_snapshot.total_gravity, body_snapshot.step, p_time_limit)
+	return KarakBody2D.predict_trajectory(Vector2.ZERO, p_initial_velocity, body_snapshot.total_linear_damp, body_snapshot.total_gravity, body_snapshot.step, p_time_limit)
 
 
 #func integrate_dynamic() -> void:
@@ -140,7 +138,7 @@ static func predict_trajectory(p_initial_position: Vector2, p_initial_velocity: 
 	var pos := p_initial_position
 	var time := 0.0
 	while time < p_time_limit:
-		linear_velocity = integrate_step(p_step, linear_velocity, p_total_linear_damp, p_accel)
+		linear_velocity = KarakBody2D.integrate_step(p_step, linear_velocity, p_total_linear_damp, p_accel)
 		pos += linear_velocity * p_step
 		points.push_back(pos)
 		time += p_step

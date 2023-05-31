@@ -48,7 +48,6 @@ func get_contact_local_shape(contact_idx: int) -> int:
 	return contact_local_shape[contact_idx]
 
 
-@warning_ignore(return_value_discarded)
 func _contacts_resize(p_size: int) -> void:
 	contact_collider.resize(p_size)
 	contact_collider_id.resize(p_size)

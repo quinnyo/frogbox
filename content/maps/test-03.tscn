@@ -1,22 +1,22 @@
 [gd_scene load_steps=27 format=3 uid="uid://it8rs14p054g"]
 
-[ext_resource type="Script" path="res://map/map.gd" id="1_qlqnw"]
-[ext_resource type="Texture2D" path="res://backdrop.dds" id="3_e4x02"]
-[ext_resource type="PackedScene" uid="uid://ddqlc55w5pssq" path="res://map/spawn_point.tscn" id="3_i1qn0"]
-[ext_resource type="PackedScene" uid="uid://vjs6wh4i6a0g" path="res://mess/props/pin_wheel.tscn" id="5_g1c02"]
-[ext_resource type="Script" path="res://map/zone_2d.gd" id="5_h8ogp"]
-[ext_resource type="PackedScene" uid="uid://crdakekd6onqs" path="res://mess/props/wibbler.tscn" id="6_11arw"]
-[ext_resource type="PackedScene" uid="uid://b3b0v60a7hr3y" path="res://mess/props/bendy_shroom.tscn" id="7_lfi5s"]
-[ext_resource type="PackedScene" uid="uid://dugae8nq7rnt4" path="res://mess/props/leafy_thing.tscn" id="8_hlk6j"]
-[ext_resource type="PackedScene" uid="uid://bqyru0hthfklr" path="res://mess/friends/friend_1.tscn" id="8_yoar0"]
-[ext_resource type="PackedScene" uid="uid://bwq3yvsgocgfd" path="res://mess/friends/friend_2.tscn" id="9_44she"]
-[ext_resource type="Script" path="res://addons/qnvr_poly_chunk/src/poly_chunk_2d.gd" id="10_7lbqy"]
-[ext_resource type="PackedScene" uid="uid://byf8grauxwk0f" path="res://mess/friends/friend_3.tscn" id="10_o2u2q"]
-[ext_resource type="PackedScene" uid="uid://85giyiq00d4q" path="res://mess/droplet.tscn" id="11_2f02n"]
-[ext_resource type="Script" path="res://mess/bendy_line_2d.gd" id="12_ktuvj"]
-[ext_resource type="PackedScene" uid="uid://ce5cpo2jl51dh" path="res://entity/toad/toad.tscn" id="12_ll40j"]
-[ext_resource type="Texture2D" uid="uid://d3iqg1q3olrvl" path="res://mess/props/ground_noise_b.png" id="13_w7g53"]
-[ext_resource type="Script" path="res://mess/autocam/camera_hint_2d.gd" id="15_c7lqf"]
+[ext_resource type="Script" path="res://map/map.gd" id="1_ot8jk"]
+[ext_resource type="Texture2D" path="res://backdrop.dds" id="2_m058t"]
+[ext_resource type="PackedScene" uid="uid://ddqlc55w5pssq" path="res://map/spawn_point.tscn" id="3_oahbi"]
+[ext_resource type="PackedScene" uid="uid://crdakekd6onqs" path="res://mess/props/wibbler.tscn" id="4_h8cg8"]
+[ext_resource type="Script" path="res://addons/qnvr_poly_chunk/src/poly_chunk_2d.gd" id="5_e2x1b"]
+[ext_resource type="Texture2D" uid="uid://d3iqg1q3olrvl" path="res://mess/props/ground_noise_b.png" id="6_34ewo"]
+[ext_resource type="Script" path="res://map/zone_2d.gd" id="7_a2ja8"]
+[ext_resource type="PackedScene" uid="uid://dugae8nq7rnt4" path="res://mess/props/leafy_thing.tscn" id="8_18cmx"]
+[ext_resource type="PackedScene" uid="uid://bqyru0hthfklr" path="res://mess/friends/friend_1.tscn" id="9_cov3p"]
+[ext_resource type="PackedScene" uid="uid://bwq3yvsgocgfd" path="res://mess/friends/friend_2.tscn" id="10_71hgr"]
+[ext_resource type="PackedScene" uid="uid://byf8grauxwk0f" path="res://mess/friends/friend_3.tscn" id="11_lcmnq"]
+[ext_resource type="Script" path="res://mess/bendy_line_2d.gd" id="12_dustk"]
+[ext_resource type="PackedScene" uid="uid://b3b0v60a7hr3y" path="res://mess/props/bendy_shroom.tscn" id="13_k3o8g"]
+[ext_resource type="PackedScene" uid="uid://vjs6wh4i6a0g" path="res://mess/props/pin_wheel.tscn" id="14_ritu7"]
+[ext_resource type="PackedScene" uid="uid://ce5cpo2jl51dh" path="res://entity/toad/toad.tscn" id="15_d58qp"]
+[ext_resource type="PackedScene" uid="uid://85giyiq00d4q" path="res://mess/droplet.tscn" id="16_gl8j7"]
+[ext_resource type="Script" path="res://mess/autocam/camera_hint_2d.gd" id="17_x24l2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw81c"]
 size = Vector2(130, 80)
@@ -45,51 +45,52 @@ normal = Vector2(1, 0)
 normal = Vector2(-1, 0)
 
 [node name="test-03" type="Node2D"]
-z_index = -1
-script = ExtResource("1_qlqnw")
+script = ExtResource("1_ot8jk")
 
 [node name="backdrop" type="Sprite2D" parent="."]
+z_index = -1
+z_as_relative = false
 position = Vector2(-216, -642)
 scale = Vector2(1.35607, 1.35607)
-texture = ExtResource("3_e4x02")
+texture = ExtResource("2_m058t")
 centered = false
 metadata/_edit_lock_ = true
 
 [node name="chunk_open" type="Node2D" parent="."]
 position = Vector2(376, -296)
 
-[node name="open" parent="chunk_open" instance=ExtResource("3_i1qn0")]
+[node name="open" parent="chunk_open" instance=ExtResource("3_oahbi")]
+z_index = 9
 position = Vector2(50, -31)
 rotation = -0.0872665
-z_index = 9
 gizmo_extents = 24.0
 
-[node name="Wibbler4" parent="chunk_open" instance=ExtResource("6_11arw")]
+[node name="Wibbler4" parent="chunk_open" instance=ExtResource("4_h8cg8")]
 
 [node name="PolyChunk2D-2" type="Node2D" parent="chunk_open"]
 texture_repeat = 2
 position = Vector2(179, -86)
-script = ExtResource("10_7lbqy")
+script = ExtResource("5_e2x1b")
 color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
-texture = ExtResource("13_w7g53")
+texture = ExtResource("6_34ewo")
 join_cut_depth = 20.0
 points = PackedVector2Array(-45, -196, -29, -18, -49, 40, -93, 86, -84, 149, 17, 76, 75, -196)
 
 [node name="PolyChunk2D" type="Node2D" parent="chunk_open"]
 texture_repeat = 2
 position = Vector2(-49, 54)
-script = ExtResource("10_7lbqy")
+script = ExtResource("5_e2x1b")
 color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
-texture = ExtResource("13_w7g53")
+texture = ExtResource("6_34ewo")
 join_cut_depth = 20.0
 points = PackedVector2Array(-45.1777, -121.815, -56.538, -8.8365, 37, 33, 127, 24, 179, -19, 173, -80, 106, -57, 42.1646, -51.6304)
 
 [node name="PolyChunk2D-3" type="Node2D" parent="chunk_open"]
 texture_repeat = 2
 position = Vector2(-376, 126)
-script = ExtResource("10_7lbqy")
+script = ExtResource("5_e2x1b")
 color_stroke = Color(0.439216, 0.607843, 0.784314, 0.772549)
-texture = ExtResource("13_w7g53")
+texture = ExtResource("6_34ewo")
 join_cut_depth = 20.0
 points = PackedVector2Array(44, 10.75, -16.5, 6.25, 30.7363, -40.2823, 170.421, -80.0685, 236, -50.5, 293, -133, 345, -73, 278, -14, 220, -19, 161.08, 22.1684, 154, -21, 127.5, 0, 110, 46)
 
@@ -99,23 +100,23 @@ position = Vector2(921, 11)
 [node name="pini" type="Area2D" parent="chunk_cave"]
 position = Vector2(129, 70)
 collision_mask = 2
-script = ExtResource("5_h8ogp")
+script = ExtResource("7_a2ja8")
 type = 1
 
 [node name="pini_collision_shape" type="CollisionShape2D" parent="chunk_cave/pini"]
 position = Vector2(43, 31)
 shape = SubResource("RectangleShape2D_xw81c")
 
-[node name="leafy_thing" parent="chunk_cave" instance=ExtResource("8_hlk6j")]
+[node name="leafy_thing" parent="chunk_cave" instance=ExtResource("8_18cmx")]
 position = Vector2(253, -96)
 rotation = 0.261799
 
 [node name="cave2" type="Node2D" parent="chunk_cave"]
 texture_repeat = 2
-script = ExtResource("10_7lbqy")
+script = ExtResource("5_e2x1b")
 color = Color(0.639216, 0.454902, 0.380392, 1)
 color_stroke = Color(0.596078, 0.984314, 0.596078, 0.533333)
-texture = ExtResource("13_w7g53")
+texture = ExtResource("6_34ewo")
 join_cut_depth = 8.0
 points = PackedVector2Array(32, 22, -7, 26, -38, 13, -54, -11, -85, -8, -106, 2, -60, 64, -55.5597, 111.022, 39.8626, 115.222, 107.635, 153.859, 188.526, 183.062, 240.676, 168.981, 271.987, 109.631, 261.184, 66.9671, 267.828, -23.2197, 291.744, -77.6114, 244.017, -118.395, 129.812, -98.513, 58.8798, -91.7541, 7, -66, 3, -27, 38, -17, 130, -25, 194, -40, 225, -26, 238, 13, 205, 13, 205, 23, 212.779, 55.3776, 236.752, 76.5905, 217.331, 97.5547, 215.616, 126.491, 187.238, 143.038, 139.758, 100.79, 121.847, 66.7027, 106, 56, 77, 56, 72.9985, 50.5794, 52.7686, 44.7107)
 
@@ -134,21 +135,21 @@ position = Vector2(137, 63)
 color = Color(0, 0.28454, 0.287581, 1)
 polygon = PackedVector2Array(-62, -12, 110, -12, 110, 40, 80.2441, 97.7464, 0.236633, 92.3481, 45, 75, 8, 44, -1, 32, -12, 11, -23, 1, -28, -2, -42, -6, -58, -6)
 
-[node name="friend1" parent="chunk_cave" instance=ExtResource("8_yoar0")]
+[node name="friend1" parent="chunk_cave" instance=ExtResource("9_cov3p")]
 position = Vector2(88, 56)
 
-[node name="friend2" parent="chunk_cave" instance=ExtResource("9_44she")]
+[node name="friend2" parent="chunk_cave" instance=ExtResource("10_71hgr")]
 position = Vector2(211, 13)
 metadata/_edit_pinned_properties_ = [&"position"]
 
-[node name="friend3" parent="chunk_cave" instance=ExtResource("10_o2u2q")]
+[node name="friend3" parent="chunk_cave" instance=ExtResource("11_lcmnq")]
 
 [node name="cave_water" type="Node2D" parent="chunk_cave"]
-texture_repeat = 2
-material = SubResource("CanvasItemMaterial_40t2s")
 z_index = 10
 z_as_relative = false
-script = ExtResource("10_7lbqy")
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_40t2s")
+script = ExtResource("5_e2x1b")
 color = Color(0.14902, 0.25098, 0.282353, 1)
 stroke_thickness = 0.0
 join_cut_depth = 8.0
@@ -161,7 +162,7 @@ modulate = Color(1, 1, 1, 0.701961)
 position = Vector2(5, -36)
 
 [node name="BendyLine2D" type="Node2D" parent="chunk_cave/doorthing"]
-script = ExtResource("12_ktuvj")
+script = ExtResource("12_dustk")
 rest_axis = Vector2(-1, 0)
 tip_node_path = NodePath("../tip")
 nsegments = 12
@@ -173,62 +174,62 @@ position = Vector2(-83, 27)
 
 [node name="chunk_wibblecity" type="Node2D" parent="."]
 
-[node name="Wibbler" parent="chunk_wibblecity" instance=ExtResource("6_11arw")]
+[node name="Wibbler" parent="chunk_wibblecity" instance=ExtResource("4_h8cg8")]
 position = Vector2(-29, 35)
 
-[node name="Wibbler2" parent="chunk_wibblecity" instance=ExtResource("6_11arw")]
+[node name="Wibbler2" parent="chunk_wibblecity" instance=ExtResource("4_h8cg8")]
 position = Vector2(-96, 24)
 
-[node name="Wibbler3" parent="chunk_wibblecity" instance=ExtResource("6_11arw")]
+[node name="Wibbler3" parent="chunk_wibblecity" instance=ExtResource("4_h8cg8")]
 position = Vector2(-144, 32)
 
 [node name="toad_turner" type="Node2D" parent="chunk_wibblecity"]
 texture_repeat = 2
 position = Vector2(71, 0)
-script = ExtResource("10_7lbqy")
+script = ExtResource("5_e2x1b")
 color = Color(0.858824, 0.65098, 0.580392, 1)
 color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
-texture = ExtResource("13_w7g53")
+texture = ExtResource("6_34ewo")
 join_cut_depth = 8.0
 points = PackedVector2Array(120, -32, 96.5, -31.25, 64.84, -5.2534, 1.4929, -2.93191, -4, -63.25, -38, -24, -41, 35, 45, 98, 87, 44, 143, 33, 120.815, -9.6782)
 
 [node name="PolyChunk2D8" type="Node2D" parent="chunk_wibblecity"]
 texture_repeat = 2
 position = Vector2(-32, 32)
-script = ExtResource("10_7lbqy")
+script = ExtResource("5_e2x1b")
 color = Color(0.495331, 0.304907, 0.204743, 1)
 color_stroke = Color(0.389537, 0.493565, 0.32515, 0.772549)
-texture = ExtResource("13_w7g53")
+texture = ExtResource("6_34ewo")
 join_cut_depth = 8.0
 points = PackedVector2Array(-16.3984, -8.28915, -90, -6, -149, -19, -160, -16, -160, 288, 416, 289, 403, 191, 383, 97, 359, 68, 319, 63, 283, 55, 228, 64, 197, 86, 157, 69, 141, 40, 113, 4, 58, -3, 1.74422, 3.55693)
 
 [node name="chunk_hasaplant" type="Node2D" parent="."]
 position = Vector2(447, 13)
 
-[node name="leafy_thing" parent="chunk_hasaplant" instance=ExtResource("8_hlk6j")]
+[node name="leafy_thing" parent="chunk_hasaplant" instance=ExtResource("8_18cmx")]
 position = Vector2(-131, 23)
 
 [node name="PolyChunk2D6" type="Node2D" parent="chunk_hasaplant"]
 texture_repeat = 2
-script = ExtResource("10_7lbqy")
+script = ExtResource("5_e2x1b")
 color = Color(0.858824, 0.65098, 0.580392, 1)
 color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
-texture = ExtResource("13_w7g53")
+texture = ExtResource("6_34ewo")
 join_cut_depth = 14.0
 points = PackedVector2Array(144.12, 12.3697, 88.25, -12.25, 0, -11, -72, -6, -121.91, 4.4966, -141.75, 15, -162, 40, -175.5, 91.75, -132.75, 114.5, -71.3004, 88.2613, 25.4312, 85.3388, 67.0873, 124.947, 137.282, 117.054, 172.478, 96.5279, 179.336, 59.3602)
 
 [node name="chunk_mushpit" type="Node2D" parent="."]
 position = Vector2(724, 183)
 
-[node name="bendy_shroom" parent="chunk_mushpit" instance=ExtResource("7_lfi5s")]
+[node name="bendy_shroom" parent="chunk_mushpit" instance=ExtResource("13_k3o8g")]
 
 [node name="PolyChunk2D5" type="Node2D" parent="chunk_mushpit"]
 texture_repeat = 2
 position = Vector2(152, -34)
-script = ExtResource("10_7lbqy")
+script = ExtResource("5_e2x1b")
 color = Color(0.858824, 0.65098, 0.580392, 1)
 color_stroke = Color(0.486558, 0.309649, 0.217448, 0.772549)
-texture = ExtResource("13_w7g53")
+texture = ExtResource("6_34ewo")
 join_cut_depth = 8.0
 points = PackedVector2Array(81.0834, 46.5833, 74, -35, -9, -47, -21, -7, -62, 12.25, -134.25, 29, -196.729, 22.9364, -259.499, 32.2897, -291, 20, -290, -32, -322, -37, -371, -32, -362.856, 19.857, -372, 93, -329, 127, -266, 140, -189, 135, -99, 149, -99, 118, -34, 106, 18, 140, 25.8151, 92.3218)
 
@@ -236,20 +237,20 @@ points = PackedVector2Array(81.0834, 46.5833, 74, -35, -9, -47, -21, -7, -62, 12
 position = Vector2(1536, 320)
 
 [node name="PolyChunk2D" type="Node2D" parent="chunk_cornertime"]
-script = ExtResource("10_7lbqy")
+script = ExtResource("5_e2x1b")
 points = PackedVector2Array(-16, -41, 0, -66, 0, -122, -25, -110, -46, -91, -69, -39, -101, -25, -118, 0, -22, 0)
 
 [node name="PolyChunk2D-2" type="Node2D" parent="chunk_cornertime"]
 position = Vector2(0, -260)
-script = ExtResource("10_7lbqy")
+script = ExtResource("5_e2x1b")
 points = PackedVector2Array(-4, -25, 1, -38, 0, -100, -24, -83, -70, -70, -69, -39)
 
 [node name="PolyChunk2D-3" type="Node2D" parent="chunk_cornertime"]
 position = Vector2(0, -520)
-script = ExtResource("10_7lbqy")
+script = ExtResource("5_e2x1b")
 points = PackedVector2Array(0, 13, 0, -18, -16, -22, -48, -9, -84, 27, -61, 61, -54, 23, -28, 10)
 
-[node name="pin_wheel" parent="." instance=ExtResource("5_g1c02")]
+[node name="pin_wheel" parent="." instance=ExtResource("14_ritu7")]
 position = Vector2(636, -184)
 
 [node name="tank" type="Node2D" parent="."]
@@ -300,41 +301,41 @@ shape = SubResource("RectangleShape2D_0i40o")
 [node name="enemies" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
-[node name="toad" parent="enemies" instance=ExtResource("12_ll40j")]
+[node name="toad" parent="enemies" instance=ExtResource("15_d58qp")]
 position = Vector2(254, -94)
 
-[node name="toad2" parent="enemies" instance=ExtResource("12_ll40j")]
+[node name="toad2" parent="enemies" instance=ExtResource("15_d58qp")]
 position = Vector2(513, -18)
 
-[node name="toad4" parent="enemies" instance=ExtResource("12_ll40j")]
+[node name="toad4" parent="enemies" instance=ExtResource("15_d58qp")]
 position = Vector2(650, 142)
 
-[node name="toad3" parent="enemies" instance=ExtResource("12_ll40j")]
+[node name="toad3" parent="enemies" instance=ExtResource("15_d58qp")]
 position = Vector2(49, -243)
 face_left = false
 
 [node name="droplets" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
-[node name="droplet" parent="droplets" instance=ExtResource("11_2f02n")]
+[node name="droplet" parent="droplets" instance=ExtResource("16_gl8j7")]
 position = Vector2(112, -235)
 
-[node name="droplet2" parent="droplets" instance=ExtResource("11_2f02n")]
+[node name="droplet2" parent="droplets" instance=ExtResource("16_gl8j7")]
 position = Vector2(277, -374)
 
-[node name="droplet3" parent="droplets" instance=ExtResource("11_2f02n")]
+[node name="droplet3" parent="droplets" instance=ExtResource("16_gl8j7")]
 position = Vector2(203, -238)
 
-[node name="droplet4" parent="droplets" instance=ExtResource("11_2f02n")]
+[node name="droplet4" parent="droplets" instance=ExtResource("16_gl8j7")]
 position = Vector2(511, -536)
 
-[node name="droplet5" parent="droplets" instance=ExtResource("11_2f02n")]
+[node name="droplet5" parent="droplets" instance=ExtResource("16_gl8j7")]
 position = Vector2(134, -171)
 
-[node name="droplet6" parent="droplets" instance=ExtResource("11_2f02n")]
+[node name="droplet6" parent="droplets" instance=ExtResource("16_gl8j7")]
 position = Vector2(326, -224)
 
-[node name="droplet7" parent="droplets" instance=ExtResource("11_2f02n")]
+[node name="droplet7" parent="droplets" instance=ExtResource("16_gl8j7")]
 position = Vector2(576, -200)
 
 [node name="bounds" type="Node2D" parent="."]
@@ -343,7 +344,7 @@ position = Vector2(576, -200)
 position = Vector2(-396, -780)
 collision_layer = 0
 collision_mask = 7
-script = ExtResource("5_h8ogp")
+script = ExtResource("7_a2ja8")
 type = 2
 
 [node name="top" type="CollisionShape2D" parent="bounds/world_bounds_min"]
@@ -356,7 +357,7 @@ shape = SubResource("WorldBoundaryShape2D_jfuxi")
 position = Vector2(1740, 524)
 collision_layer = 0
 collision_mask = 7
-script = ExtResource("5_h8ogp")
+script = ExtResource("7_a2ja8")
 type = 2
 
 [node name="bottom" type="CollisionShape2D" parent="bounds/world_bounds_max"]
@@ -367,13 +368,13 @@ shape = SubResource("WorldBoundaryShape2D_l32ex")
 
 [node name="view_limit_min" type="Node2D" parent="bounds"]
 position = Vector2(-213, -597)
-script = ExtResource("15_c7lqf")
+script = ExtResource("17_x24l2")
 as_limit_left = true
 as_limit_top = true
 
 [node name="view_limit_max" type="Node2D" parent="bounds"]
 position = Vector2(1557, 341)
-script = ExtResource("15_c7lqf")
+script = ExtResource("17_x24l2")
 as_limit_right = true
 as_limit_bottom = true
 

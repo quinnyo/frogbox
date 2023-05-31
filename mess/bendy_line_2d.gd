@@ -4,7 +4,7 @@ extends Node2D
 
 @export var rest_axis: Vector2 = Vector2.UP
 
-@export_node_path(Node2D) var tip_node_path := NodePath():
+@export var tip_node_path := NodePath():
 	set(value):
 		tip_node_path = value
 #		var tip_node: Node2D = get_node_or_null(tip_node_path)

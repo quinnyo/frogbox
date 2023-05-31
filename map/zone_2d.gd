@@ -6,7 +6,7 @@ signal entity_exited(node: Node2D)
 
 enum { ZONE_NORMAL, ZONE_WATER, ZONE_WORLD_BOUND }
 
-@export_enum("Normal", "Water", "World Bound") var type := ZONE_NORMAL
+@export var type := ZONE_NORMAL
 
 ## Name of method to call on nodes detected entering the zone
 @export var fn_entered_zone = "_entered_zone"
@@ -19,7 +19,6 @@ enum { ZONE_NORMAL, ZONE_WATER, ZONE_WORLD_BOUND }
 @export var zone_group_name := ""
 
 
-@warning_ignore(return_value_discarded)
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)

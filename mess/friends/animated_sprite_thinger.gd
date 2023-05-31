@@ -22,7 +22,7 @@ func action(loops: int) -> void:
 	play(anim_action)
 	_anim_action = anim_action
 	_loops = loops
-	var s := snapped(randfn(1.0, 0.15), 0.1)
+	var s := snappedf(randfn(1.0, 0.15), 0.1)
 	speed_scale = maxf(s, 0.5)
 
 

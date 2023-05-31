@@ -239,12 +239,7 @@ func _get_camera_transform() -> Transform2D:
 	if !offset.is_zero_approx():
 		screen_rect.position += offset
 
-	var xf := Transform2D()
-	xf.set_scale(zoom_scale)
-	if rotating:
-		xf.set_rotation(angle)
-	xf.origin = screen_rect.position
-
+	var xf := Transform2D(angle if rotating else 0.0, zoom_scale, 0.0, screen_rect.position)
 	return xf.affine_inverse()
 
 

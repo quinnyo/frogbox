@@ -32,10 +32,9 @@ func _create_pin_joint(p_anchor: Vector2, p_body_a: RID, p_body_b: RID) -> RID:
 func _start() -> void:
 	_active_mode = mode
 	var local_state := PhysicsServer2D.body_get_direct_state(body.get_rid())
-	var local_transform := local_state.transform
 	var collider_state := PhysicsServer2D.body_get_direct_state(collider)
 	var collider_transform := collider_state.transform
-	local_transform.set_rotation(Vector2.UP.angle_to(contact_normal))
+	var local_transform := Transform2D(Vector2.UP.angle_to(contact_normal), local_state.transform.origin)
 	pose = collider_transform.inverse() * local_transform
 	body.lock_rotation = true
 	PhysicsServer2D.body_add_collision_exception(body.get_rid(), collider)
